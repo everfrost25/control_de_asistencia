@@ -1,0 +1,766 @@
+﻿
+### ACTA_CONTROL_ASISTENCIA.docx
+INSTITUTO DE EDUCACI�N SUPERIOR TECNOL�GICO P�BLICO
+�V�ctor Ra�l Haya de la Torre�
+A�o de la Esperanza y el Fortalecimiento de la Democracia
+Tema:
+Acta de constituci�n
+Integrantes:
+Wong Bustamante, Martin Samuel
+Trejo T�mara, Sugey Milagros
+Gonz�les R�os, C�sar Andr�
+Zapata Guardia, Rildo Benjamin
+Urrieta Milla, Dinora Jimena
+Docente:
+Farro Regalado, Jeffer Harold
+Unidad Did�ctica:
+Desarrollo de Proyectos TI
+Ciclo:
+V � B
+Nombre del proyecto
+Implementaci�n del Sistema Web de Control de Asistencia de de car�cter requerido y Docentes para el IES Publico "Victor Raul Haya de la Torre".
+Problema identificado
+El Instituto de Educacion Superior Tecnologico Publico "Victor Raul Haya de la Torre" requiere fortalecer el control de asistencia de de car�cter requerido y docentes, debido a que los registros manuales o poco centralizados pueden generar perdida de informacion, duplicidad de datos, errores en el calculo de inasistencias y demora en la elaboracion de reportes academicos.
+La falta de una plataforma web centralizada dificulta consultar asistencias oportunamente, realizar seguimiento de de car�cter requerido con acumulacion de faltas y controlar los casos en los que se alcanza el porcentaje limite establecido por la institucion.
+Esta situacion afecta la eficiencia administrativa y reduce la disponibilidad de informaci�n confiable para docentes y personal responsable de la gesti�n acad�mica.
+Ante esta necesidad, se propone implementar un sistema web que automatice el registro, consulta, seguimiento y reporte de asistencias e inasistencias, permitiendo mejorar la organizacion de los datos y brindar una herramienta funcional para la toma de decisiones academicas.
+Justificaci�n
+3.1. Justificaci�n t�cnica
+El presente proyecto se justifica t�cnicamente porque plantea el desarrollo de una plataforma web orientada a modernizar y automatizar el control de asistencia de de car�cter requerido y docentes del Instituto de Educaci�n Superior Tecnol�gico P�blico �V�ctor Ra�l Haya de la Torre�. La propuesta responde a la necesidad de contar con una herramienta inform�tica centralizada que permita registrar, consultar, actualizar y generar informaci�n acad�mica de manera indexada, reduciendo los problemas asociados al uso de registros manuales o poco integrados.
+Para su implementaci�n se utilizar�n tecnolog�as web como PHP, MySQL, HTML, CSS, Tailwind CSS y JavaScript, las cuales permiten desarrollar un sistema accesible desde un navegador, funcional en un entorno local mediante XAMPP o Laragon y, opcionalmente, desplegable en un hosting gratuito para fines de sustentaci�n acad�mica. PHP permitir� construir la l�gica del sistema y gestionar los procesos internos; MySQL facilitar� el almacenamiento estructurado de usuarios, docentes, de car�cter requerido, asistencias, inasistencias y reportes; mientras que HTML, CSS, Tailwind CSS y JavaScript contribuir�n al dise�o de interfaces claras, responsivas y f�ciles de utilizar.
+Asimismo, el sistema contempla m�dulos importantes como autenticaci�n, control de roles, gesti�n de usuarios, gesti�n de de car�cter requerido, gesti�n de docentes, registro de asistencia, c�lculo autom�tico de inasistencias, generaci�n de reportes y visualizaci�n de indicadores mediante un dashboard administrativo. Estas funcionalidades hacen que la soluci�n sea t�cnicamente viable, ya que permite organizar la informaci�n en una base de datos relacional, evitar la duplicidad de registros y facilitar la consulta oportuna de los datos acad�micos.
+Adem�s, la propuesta considera aspectos t�cnicos relevantes como seguridad mediante inicio de sesi�n, control de acceso seg�n roles, integridad de datos, compatibilidad con navegadores modernos, dise�o responsivo, mantenibilidad del c�digo y posibilidad de realizar respaldos de la base de datos. Por ello, el proyecto resulta t�cnicamente adecuado para atender la problem�tica identificada, ya que proporciona una soluci�n web funcional, organizada, escalable y alineada con las necesidades del proceso de control de asistencia.
+3.2. Justificaci�n operativa
+El proyecto se justifica operativamente porque busca mejorar el proceso actual de control de asistencia, el cual puede presentar dificultades cuando se realiza mediante formatos f�sicos, hojas manuales o registros poco centralizados. Estas formas de trabajo suelen generar p�rdida de informaci�n, duplicidad de datos, errores en el c�lculo de inasistencias y demoras en la elaboraci�n de reportes acad�micos, afectando la eficiencia de docentes, administradores y personal responsable de la gesti�n acad�mica.
+Con la implementaci�n del sistema web, los docentes podr�n registrar asistencias e inasistencias de manera m�s r�pida, ordenada y confiable. Asimismo, el administrador tendr� la posibilidad de gestionar usuarios, docentes y de car�cter requerido, supervisar los registros ingresados, consultar informaci�n actualizada y generar reportes que faciliten el seguimiento acad�mico. Esto permitir� reducir el tiempo que normalmente se emplea en registrar, corregir, consolidar y buscar datos en papel, optimizando las actividades diarias de la instituci�n y asegurando la disponibilidad de informaci�n oportuna para la toma de decisiones.
+3.3. Justificaci�n econ�mica
+Desde la perspectiva econ�mica, el proyecto es viable porque su desarrollo se basar� en el uso de herramientas de software libre, plataformas gratuitas y tecnolog�as de c�digo abierto que no requieren el pago de licencias comerciales. El empleo de PHP, MySQL, Tailwind CSS y entornos locales como XAMPP o Laragon permite construir e implementar la soluci�n tecnol�gica sin generar costos elevados de adquisici�n de software propietario para la instituci�n.
+Asimismo, al tratarse de un proyecto desarrollado por de car�cter requerido en el marco de la unidad did�ctica de Desarrollo de Proyectos TI, no se requiere inversi�n en consultor�as externas ni mano de obra comercial, aprovechando el proceso formativo para dotar al instituto de una herramienta �til. A mediano y largo plazo, la automatizaci�n del control de asistencia generar� ahorros indirectos al reducir significativamente el uso de papel, formatos impresos y materiales de oficina, as� como al disminuir las horas de trabajo manual invertidas por el personal administrativo en la elaboraci�n y consolidaci�n de reportes.
+3.4. Justificaci�n acad�mica
+El proyecto posee una s�lida justificaci�n acad�mica ya que constituye una oportunidad pr�ctica para que los de car�cter requerido del quinto ciclo de la carrera de Desarrollo de Sistemas de Informaci�n apliquen, integren y consoliden las competencias t�cnicas adquiridas a lo largo de su formaci�n. El desarrollo del sistema exige poner en pr�ctica conocimientos de an�lisis de requerimientos, dise�o de bases de datos relacionales, programaci�n web del lado del servidor (backend) con PHP, maquetaci�n de interfaces responsivas (frontend) con Tailwind CSS y control de flujos de datos con JavaScript.
+Adem�s del aspecto puramente t�cnico, el proyecto promueve el aprendizaje basado en problemas reales, obligando al equipo a investigar los procesos internos de su propia instituci�n, proponer soluciones viables, organizar actividades mediante cronogramas, asumir roles espec�ficos de trabajo y documentar rigurosamente cada fase del ciclo de vida del software. Esto fomenta el desarrollo de habilidades blandas esenciales para el desempe�o profesional, tales como el trabajo en equipo, la comunicaci�n efectiva, la responsabilidad, el cumplimiento de plazos acad�micos y la resoluci�n de problemas t�cnicos bajo un enfoque de gesti�n de proyectos de tecnolog�as de la informaci�n.
+Prop�sito
+El presente sistema web tiene como prop�sito desarrollar una plataforma centralizada que permita automatizar y mejorar el registro, consulta, seguimiento y reporte de asistencias e inasistencias de de car�cter requerido y docentes en el IES P�blico "V�ctor Ra�l Haya de la Torre". Con ello se busca reemplazar progresivamente los formatos f�sicos y registros manuales poco integrados, optimizando el tiempo empleado por el personal administrativo y los docentes, reduciendo la duplicidad de datos y evitando la p�rdida de informaci�n. Asimismo, el proyecto pretende facilitar un control oportuno de los l�mites de faltas permitidos por la instituci�n y proveer indicadores e informaci�n confiable y en tiempo real para agilizar la gesti�n y la toma de decisiones acad�micas. 
+Objetivo general
+Desarrollar e implementar un sistema web de gesti�n y control de asistencia para automatizar el registro, consulta, seguimiento y reporte de las asistencias e inasistencias de de car�cter requerido y docentes del IES P�blico "V�ctor Ra�l Haya de la Torre". 
+Objetivos espec�ficos
+Analizar los requerimientos funcionales y no funcionales del sistema web, identificando las necesidades de los docentes, de car�cter requerido y personal responsable de la gesti�n acad�mica.
+Dise�ar la base de datos relacional en MySQL, estructurando las tablas, campos y relaciones necesarias para almacenar de forma segura la informaci�n de usuarios, docentes, de car�cter requerido, asistencias e inasistencias.
+Desarrollar los m�dulos principales del sistema, incluyendo la autenticaci�n con control de roles, gesti�n de usuarios, registro de asistencia, c�lculo autom�tico de inasistencias y un dashboard administrativo para la visualizaci�n de indicadores.
+Realizar pruebas funcionales del software para verificar la integridad de los datos, la seguridad en el inicio de sesi�n y el correcto funcionamiento de los reportes consolidados.
+Elaborar el manual de usuario en formato PDF para orientar a los docentes y administradores sobre el uso correcto de las funciones de la plataforma web.
+Alcance (Incluye / No incluye)
+El alcance del proyecto comprende el desarrollo de una plataforma web funcional para la gesti�n y automatizaci�n del control de asistencia institucional, permitiendo registrar la asistencia e inasistencias de de car�cter requerido y docentes, as� como generar reportes consolidados y visualizar indicadores clave para apoyar la administraci�n acad�mica.
+Incluye
+M�dulo de Gesti�n de Usuarios y Permisos: Control de acceso basado en roles (RBAC) para Administrador, Docente y Estudiante.
+M�dulo de Estructura Acad�mica: Mantenimiento de programas de estudio, per�odos acad�micos, ciclos, unidades did�cticas, secciones, horarios y asignaci�n de carga docente.
+M�dulo de Asistencia Estudiantil: Registro diario, control de estados (Presente, Falto, Tardanza, Justificado), c�lculo autom�tico de inasistencias acumuladas y alertas en tiempo real.
+M�dulo de Asistencia Docente: Registro de ingreso/salida de sesiones de clase, validaci�n contra el horario establecido y consolidaci�n de horas trabajadas.
+M�dulo de Reportes y Exportaci�n: Tableros de control visuales, generaci�n de reportes consolidados por secci�n/unidad did�ctica y herramientas de exportaci�n a formatos PDF y Excel (CSV).
+M�dulo de Seguridad y Mantenimiento: Respaldo y restauraci�n de base de datos, bit�cora de auditor�a de modificaciones y mecanismos avanzados de protecci�n web.
+M�dulo de Estructura Acad�mica: permitir� gestionar programas de estudio, per�odos acad�micos, ciclos, unidades did�cticas, secciones, horarios y sesiones de clase.
+M�dulo de Asistencia Estudiantil: permitir� registrar, consultar y controlar la asistencia de los estudiantes.
+M�dulo de Asistencia Docente: permitir� registrar y consultar la asistencia de los docentes.
+M�dulo de Importaci�n Masiva: permitir� cargar estudiantes mediante archivos Excel o CSV.
+M�dulo de Edici�n e Historial: permitir� realizar correcciones controladas y mantener un historial de modificaciones.
+M�dulo de Reportes: permitir� generar reportes de asistencia y estad�sticas en formatos PDF y Excel.
+M�dulo de Seguridad y Roles: administrar� autenticaci�n, autorizaci�n y permisos seg�n el tipo de usuario.
+M�dulo de Respaldo: permitir� generar copias de seguridad de la informaci�n del sistema.
+Integraci�n del Sistema: permitir� integrar los componentes frontend, backend y base de datos.
+No incluye 
+No se desarrollar� aplicaci�n m�vil Android.
+No se desarrollar� aplicaci�n m�vil iOS.
+No se integrar�n dispositivos biom�tricos.
+No se implementar� reconocimiento facial.
+No se integrar�n pasarelas de pago.
+No se integrar�n sistemas gubernamentales ni plataformas externas de la institucion.
+No se contratar� hosting profesional de pago.
+No se desarrollar� aplicaci�n de escritorio.
+No se incluira soporte tecnico posterior a la entrega academica.
+No se implementar�n notificaciones por SMS, WhatsApp o correo electronico automatico.
+Queda expresamente fuera del alcance de este proyecto el desarrollo de m�dulos para la gesti�n de planillas, pagos de haberes, control de asistencia de personal administrativo y de servicios, as� como la infraestructura de servidores f�sicos. Cualquier funcionalidad no detallada expl�citamente en los Requerimientos Funcionales (RF) del presente documento se considera fuera del alcance y requerir� un proceso formal de control de cambios.
+Entregables
+Gesti�n del Proyecto
+Acta de Constituci�n Aprobada: Documento formal de inicio del proyecto.
+Plan de Gesti�n del Proyecto y Minutas: Registro de planificaciones, acuerdos y seguimiento de reuniones de avance.
+Informe y Actas de Cierre Administrativo: Consolidaci�n final de la gesti�n del proyecto y formalizaci�n del cierre.
+Ingenier�a de Requisitos y Dise�o de Interfaces
+Especificaci�n de Requisitos de Software (SRS - IEEE 830): Definici�n detallada del alcance funcional y no funcional del sistema.
+Prototipos de Interfaz (UI/UX): Mockups interactivos y dise�o visual de pantallas desarrollados en Figma.
+Arquitectura y Base de Datos
+Dise�o Entidad-Relaci�n (DER): Modelo conceptual y l�gico de la estructura de datos.
+Base de Datos Implementada: Script f�sico en MySQL (DDL) con tablas, relaciones y datos semilla cargados.
+Desarrollo y Componentes de Software (C�digo Fuente)
+M�dulos Core del Sistema Web:
+Seguridad, Autenticaci�n y Roles: Control de acceso y gesti�n de usuarios.
+Estructura Acad�mica: Mapeo de carreras, secciones, cursos y horarios.
+Asistencia Estudiantil: Registro y c�lculo autom�tico de la regla del 30%.
+Asistencia Docente: Control y seguimiento del cumplimiento de sesiones de clase.
+Importaci�n Masiva de Datos: Carga estructurada de alumnos y docentes v�a archivos plano (CSV/Excel).
+Edici�n Limitada e Historial (Auditor�a): Ajustes extempor�neos justificados y trazabilidad de cambios.
+Reportes Avanzados: Generaci�n de consolidados e indicadores exportables a PDF y Excel.
+Repositorio de C�digo Fuente: C�digo estructurado en PHP (Backend y Frontend) empaquetado e integrado en el repositorio oficial.
+Aseguramiento de la Calidad (QA) e Integraci�n
+Plan y Matriz de Casos de Prueba: Especificaci�n de escenarios de prueba de caja negra.
+Reporte de Ejecuci�n y Pruebas de QA: Informe de incidencias registradas, correcciones aplicadas y pruebas de regresi�n.
+Sistema Integrado y Validado: Software comprobado en su totalidad en ambiente de pruebas antes del despliegue.
+Despliegue y Documentaci�n Final
+Sistema Web Desplegado: Plataforma operativa instalada en el entorno de producci�n definido.
+Manual de Usuario: Gu�a ilustrada paso a paso para la operaci�n por parte de estudiantes, docentes y administradores.
+Manual T�cnico y de Despliegue: Documentaci�n de arquitectura, configuraci�n del servidor y mantenimiento del software.
+Interesados
+Docente / Patrocinador: Mg. Jeffer Harold Farro Regalado. Se encarga de cumplir el rol de patrocinador, orientador o evaluador del proyecto, supervisando el avance, revisando los entregables y validando el cumplimiento de los criterios acad�micos.
+Equipo Desarrollador (de car�cter requerido): Conformado por cinco de car�cter requerido del ciclo V - B (Wong Bustamante, Martin Samuel; Trejo T�mara, Sugey Milagros; Gonz�les R�os, C�sar Andr�; Zapata Guardia, Rildo Benjamin; Urrieta Milla, Dinora Jimena). Son los responsables de analizar, dise�ar, desarrollar, probar y documentar el sistema.
+Usuario final: Representado por los docentes y el personal administrativo responsable de la gesti�n acad�mica de la instituci�n, quienes utilizar�n la plataforma para registrar, consultar y controlar las asistencias.
+Instituci�n beneficiaria: Instituto de Educaci�n Superior Tecnol�gico P�blico �V�ctor Ra�l Haya de la Torre�, que contar� con una herramienta tecnol�gica centralizada para modernizar su control de asistencia.
+Roles del equipo
+Jefe de proyecto: Zapata Guardia, Rildo Benjamin. (Coordina el trabajo del equipo, organiza las actividades, controla el cumplimiento del cronograma y comunica los avances al docente o evaluador).
+Analista: Trejo T�mara, Sugey Milagros. (Recoge y organiza los requerimientos del sistema, identifica las necesidades del usuario y define las funciones principales que debe cumplir la soluci�n).
+Dise�ador de base de datos: Gonz�les R�os, C�sar Andr�. (Dise�a la estructura de la base de datos en MySQL, definiendo las tablas, campos, claves primarias, claves for�neas y relaciones para las asistencias).
+Programador (Backend / Frontend): Wong Bustamante, Martin Samuel. (Desarrolla el sistema web utilizando PHP, MySQL, HTML, CSS, Tailwind CSS y JavaScript, implementando los m�dulos definidos en el alcance).
+Tester / Documentador: Urrieta Milla, Dinora Jimena. (Realiza pruebas funcionales para verificar que el sistema trabaje correctamente, identifica errores y elabora los documentos del proyecto).
+Requerimientos principales
+11.1. Requerimientos funcionales
+11.2. Requerimientos no funcionales
+Cronograma inicial
+Semanas 1 - 2: Acta de constituci�n y an�lisis de requerimientos Se elaborar� formalmente el acta de constituci�n del proyecto y se identificar�n detalladamente los requerimientos funcionales y no funcionales del sistema web, definiendo con claridad el alcance, los interesados y los entregables iniciales.
+Semanas 3 - 4: Dise�o de base de datos e interfaces (Prototipado) Se dise�ar� la estructura l�gica y relacional de la base de datos en MySQL y se elaborar�n los prototipos preliminares de las pantallas del sistema, garantizando que la interfaz sea clara, intuitiva y completamente responsiva.
+Semanas 5 - 6: Desarrollo e implementaci�n de m�dulos Fase dedicada a la programaci�n backend y frontend utilizando PHP, MySQL, Tailwind CSS y JavaScript. Se construir�n los m�dulos esenciales: autenticaci�n por roles, gesti�n de usuarios (Estudiantes y docentes), registro de asistencias y el dashboard administrativo.
+Semana 7: Pruebas funcionales y correcciones de software Se ejecutar�n pruebas funcionales integrales para verificar la consistencia de los datos, la seguridad en el control de acceso y la correcta generaci�n de reportes autom�ticos, corrigiendo de manera progresiva cualquier error de c�digo o de validaci�n.
+Semana 8: Documentaci�n final y presentaci�n del sistema Finalizaci�n y entrega del manual de usuario en formato PDF, consolidaci�n del informe t�cnico final y sustentaci�n del sistema web completamente operativo ante la unidad did�ctica.
+Presupuesto estimado
+Riesgos iniciales
+Falta de tiempo: Puede afectar el cumplimiento del cronograma acad�mico de 8 semanas y comprometer la entrega de los m�dulos principales del sistema web.
+Respuesta al riesgo: Dividir tareas de forma equitativa, priorizar el desarrollo de los m�dulos esenciales (como el registro y la autenticaci�n) y realizar un seguimiento semanal estricto de los avances.
+Errores de programaci�n: Pueden presentarse fallas imprevistas en la conexi�n con la base de datos relacional en MySQL, errores de sintaxis en PHP, o problemas en las validaciones de los formularios de asistencia.
+Respuesta al riesgo: Realizar pruebas unitarias por cada m�dulo desarrollado y corregir los errores inform�ticos de manera t�cnica y progresiva antes de la entrega final.
+Falta de coordinaci�n: Al ser un equipo de cinco integrantes, la falta de comunicaci�n puede generar duplicidad de trabajo, retrasos en la integraci�n del c�digo o incumplimiento de responsabilidades.
+Respuesta al riesgo: Programar reuniones constantes de avance, respetar estrictamente los roles asignados a cada estudiante y mantener canales abiertos de comunicaci�n.
+P�rdida de archivos: Fallas en los equipos locales (XAMPP/Laragon) o problemas t�cnicos pueden ocasionar retrasos graves o la p�rdida de avances importantes del c�digo fuente.
+Respuesta al riesgo: Utilizar copias de seguridad de la base de datos de forma peri�dica, almacenamiento respaldado en la nube o herramientas de control de versiones.
+Supuestos
+Los de car�cter requerido del equipo desarrollador tendr�n acceso continuo a computadoras o laptops con el entorno local configurado (XAMPP o Laragon) para avanzar con las actividades del proyecto.
+El docente de la unidad did�ctica brindar� orientaci�n, retroalimentaci�n y acompa�amiento t�cnico durante las etapas clave del desarrollo del sistema de asistencia.
+El equipo de cinco integrantes cuenta con los conocimientos b�sicos necesarios en programaci�n web (PHP, JavaScript) y dise�o de bases de datos relacionales (MySQL).
+Se dispondr� de las herramientas de software libre y de las tecnolog�as estipuladas sin variaciones que alteren el desarrollo local de la plataforma web.
+El proyecto se desarrollar� y completar� estrictamente dentro del periodo acad�mico de 8 semanas establecido por la instituci�n.
+Restricciones
+Tiempo limitado: El proyecto cuenta con una fecha fija de entrega y debe completarse obligatoriamente dentro del periodo acad�mico corto de 8 semanas.
+Presupuesto reducido: El equipo dispone de recursos econ�micos limitados (presupuesto operativo estimado de S/. 500.00), por lo que es de car�cter requerido utilizar tecnolog�as de c�digo abierto y herramientas de software libre.
+Uso obligatorio de una tecnolog�a determinada: El desarrollo de la plataforma web est� condicionado a cumplir con el stack tecnol�gico definido por la unidad did�ctica: PHP para el backend, MySQL para la base de datos relacional, y HTML, CSS, Tailwind CSS y JavaScript para el frontend.
+Nivel t�cnico de los de car�cter requerido: La complejidad del sistema web est� delimitada por las habilidades, competencias y conocimientos actuales de los cinco integrantes del equipo del ciclo V - B.
+Acceso limitado a internet o equipos: Ante la variabilidad en la conectividad o la disponibilidad de las computadoras de los integrantes, el avance de las tareas de programaci�n debe estar planificado para ejecutarse de manera �ptima en un entorno local (mediante XAMPP o Laragon)
+Criterios de �xito
+El proyecto ser� considerado exitoso si cumple con los siguientes criterios:
+El sistema funciona correctamente y cumple con los m�dulos principales definidos en el alcance (autenticaci�n por roles, gesti�n de usuarios, registro de asistencias, c�lculo de faltas y dashboard).
+La base de datos relacional en MySQL se encuentra operativa, optimizada y correctamente vinculada con la l�gica del sistema.
+El sistema permite registrar de manera r�pida, ordenada y confiable las asistencias e inasistencias de de car�cter requerido y docentes.
+La plataforma permite visualizar reportes consolidados e indicadores �tiles para el seguimiento acad�mico institucional.
+El manual de usuario final orientado a la gu�a de docentes y administradores es entregado formalmente en formato PDF.
+El proyecto es completado y presentado de manera estricta dentro del plazo establecido de 8 semanas acad�micas.
+La soluci�n web responde directamente al problema identificado, disminuyendo los errores asociados al control manual y centralizando la informaci�n.
+Los usuarios finales (docentes y administradores) interact�an con la interfaz de manera clara, intuitiva y responsiva
+Importaci�n masiva: Permite la carga automatizada y estructurada de grandes vol�menes de datos de estudiantes, docentes y asignaturas mediante archivos plano (CSV/Excel), optimizando el tiempo de registro inicial y reduciendo errores manuales.
+Control de asistencia estudiantil: M�dulo principal para el registro diario y preciso del estado de asistencia de los alumnos (Presente, Tardanza, Falta) en sus respectivas secciones y asignaturas.
+Control docente: Funcionalidad orientada al seguimiento del cumplimiento de horarios de la plana docente, permitiendo validar sus marcas de ingreso, horas dictadas y la puntualidad en sus sesiones acad�micas.
+Regla del 30%: Regla de negocio automatizada que calcula e identifica en tiempo real a los estudiantes que sobrepasan el l�mite de inasistencias permitidas (30%), emitiendo alertas inmediatas para aplicar la inhabilitaci�n seg�n el reglamento institucional.
+Edici�n limitada: Sistema de permisos restricto que habilita la modificaci�n extempor�nea de registros de asistencia �nicamente al personal autorizado (administradores o coordinadores) y dentro de un plazo normativo configurado.
+Auditor�a: M�dulo de trazabilidad y seguridad que registra de forma detallada las acciones realizadas en la plataforma (qui�n, cu�ndo y qu� datos modific�), garantizando la transparencia e integridad de la informaci�n.
+Reportes PDF/Excel: Generaci�n de informes consolidados, estad�sticas e indicadores clave sobre la asistencia estudiantil y docente, exportables en formatos est�ndares para la toma de decisiones directivas.
+Respaldos: Mecanismo de copia de seguridad peri�dica y restauraci�n de la base de datos MySQL, asegurando la continuidad del servicio y la protecci�n de la informaci�n ante fallos de infraestructura.
+Integraci�n: Conexi�n y acoplamiento fluido entre la arquitectura de base de datos relacional, la l�gica del servidor (Backend) y la interfaz de usuario (Frontend) para un funcionamiento sin interrupciones.
+Documentaci�n: Compendio completo de entregables t�cnicos que incluye el manual de usuario, manual de arquitectura/despliegue e informes de pruebas para garantizar el mantenimiento continuo y la sostenibilidad del sistema.
+El m�dulo de estructura acad�mica permitir� registrar y gestionar correctamente los elementos acad�micos definidos.
+El sistema permitir� importar estudiantes mediante archivos Excel o CSV con validaci�n de datos.
+El sistema registrar� la asistencia de estudiantes y docentes.
+El sistema calcular� correctamente el porcentaje de inasistencia.
+El sistema generar� reportes en PDF y Excel.
+El sistema permitir� generar y restaurar copias de seguridad en un entorno de prueba.
+El sistema contar� con control de acceso seg�n los roles definidos.
+El sistema ser� integrado y validado mediante pruebas funcionales.
+Aprobaci�n
+Con la aprobaci�n de la presente Acta de Constituci�n del Proyecto, se autoriza el inicio formal del proyecto "Implementaci�n del Sistema Web de Control de Asistencia de de car�cter requerido y Docentes para el IES Publico 'Victor Raul Haya de la Torre'", estableciendo como base el prop�sito, alcance, entregables, cronograma, presupuesto, riesgos iniciales, roles del equipo y criterios de �xito. La aprobaci�n de este documento representa el compromiso de los participantes para desarrollar el proyecto de manera responsable, organizada y orientada a generar valor acad�mico e institucional.
+TABLA 1
+M�dulo / Funcionalidad del Sistema | Administrador | Docente | Estudiante
+Configuraci�n de Estructura Acad�mica y Horarios | Escritura / Lectura | Lectura | Sin Acceso
+Gesti�n de Usuarios (Creaci�n y Asignaci�n) | Escritura / Lectura | Sin Acceso | Sin Acceso
+Toma y Registro de Asistencia Diaria (Estudiantes) | Escritura / Lectura | Escritura / Lectura | Sin Acceso
+Registro de Asistencia Docente (Ingreso/Salida) | Lectura | Escritura / Lectura | Sin Acceso
+Modificaci�n/Correcci�n de Historial de Faltas | Escritura / Lectura | Solo Solicitud | Sin Acceso
+Consulta de Porcentaje de Inasistencias y Alertas | Lectura | Lectura | Lectura
+Descarga de Reportes Consolidados (Excel/PDF) | Escritura / Lectura | Escritura / Lectura | Lectura (Solo Propio)
+Respaldos y Auditor�a del Sistema | Escritura / Lectura | Sin Acceso | Sin Acceso
+TABLA 2
+ID | Descripcion | Prioridad | Actor
+RF-01 | El sistema debe permitir iniciar sesi�n mediante usuario y contrase�a, validando credenciales y gestionando sesiones de forma segura. | Alta | Administrador, Docente, Estudiante
+RF-02 | El sistema debe permitir registrar, consultar, editar y administrar usuarios del sistema seg�n el rol asignado. | Alta | Administrador
+RF-03 | El sistema debe permitir registrar de car�cter requerido de forma manual y mediante importacion de archivos CSV o Excel. | Media | Administrador
+RF-04 | El sistema debe permitir registrar, consultar y actualizar la asistencia e inasistencia de car�cter requerido y docentes y junto a su observaci�n | Alta | Docente, Administrador
+RF-05 | El sistema debe evitar duplicidad de registros de asistencia para un mismo estudiante, fecha, unidad didactica o sesion academica. | Alta | Sistema
+RF-06 | El sistema debe permitir al docente modificar registros de asistencia solo dentro del tiempo autorizado por administracion. | Media | Docente
+RF-07 | El sistema debe bloquear automaticamente la edicion de registros cuando haya vencido el tiempo permitido. | Media | Sistema
+RF-08 | El sistema debe calcular automaticamente el porcentaje de inasistencias acumuladas de cada estudiante. | Alta | Sistema
+RF-09 | El sistema debe cambiar el estado del estudiante a Inhabilitado cuando el porcentaje de inasistencias sea igual o superior al 30%. | Alta | Sistema
+RF-10 | El sistema debe generar reportes de asistencia e inasistencia con opcion de exportacion a PDF y Excel. | Alta | Administrador, Docente
+RF-11 | El sistema debe mostrar un dashboard administrativo con indicadores basicos de asistencia, inasistencias y de car�cter requerido inhabilitados. | Media | Administrador
+RF-12 | El sistema debe permitir realizar respaldos manuales de la base de datos durante el desarrollo y pruebas. | Media | Administrador
+RF-13 | El sistema permitir� registrar, modificar y listar los Programas de Estudio y Per�odos Acad�micos vigentes del instituto. | Alta | Administrador
+RF-14 | El sistema permitir� estructurar los Ciclos Acad�micos y asociar las Unidades Did�cticas (cursos) correspondientes. | Alta | Administrador
+RF-15 | El sistema permitir� la creaci�n de Secciones y la configuraci�n de Horarios (d�as, horas de inicio y fin) para cada sesi�n de clase. | Alta | Administrador
+RF-16 | El sistema permitir� realizar la Asignaci�n Docente, vinculando a cada profesor con sus respectivas unidades did�cticas y secciones. | Alta | Administrador
+RF-17 | El sistema permitir� registrar la asistencia de los docentes a sus respectivas sesiones de clase, capturando la hora exacta del registro l�gico. | Alta | Docente, Sistema
+RF-18 | El sistema gestionar� los estados permitidos para el docente: Presente, Tardanza, Inasistencia e Inasistencia Justificada. | Alta | Sistema, Administrador
+RF-19 | El sistema permitir� al Administrador realizar correcciones en la asistencia docente, registrando obligatoriamente el motivo del cambio en la bit�cora. | Media | Administrador
+RF-20 | El sistema generar� reportes mensuales de cumplimiento horario y asistencia de docentes para la jefatura acad�mica. | Media | Administrador, Jefatura Acad�mica
+RF-21 | El sistema permitir� al Estudiante consultar su r�cord hist�rico de asistencias e inasistencias filtrado por unidad did�ctica. | Alta | Estudiante
+RF-22 | El sistema mostrar� al Estudiante su porcentaje acumulado de faltas actual y el estado de sus alertas de inasistencia en tiempo real. | Alta | Estudiante, Sistema
+RF-23 | El sistema permitir� al Estudiante descargar su reporte individual de asistencia en formato PDF. | Media | Estudiante
+RF-24 | El sistema permitir� al Estudiante realizar el cambio manual de su contrase�a de acceso. | Media | Estudiante
+RF-25 | El sistema permitir� la importaci�n masiva de de car�cter requerido, docentes y horarios mediante archivos estructurados en formato Excel y CSV. | Media | Administrador
+RF-26 | El sistema permitir� exportar los reportes consolidados de asistencia en formatos nativos PDF y planillas Excel (.xlsx). | Alta | Administrador, Docente
+RF-27 | El sistema proveer� una opci�n exclusiva para el Administrador que permita generar respaldos manuales de la base de datos MySQL y la restauraci�n de copias de seguridad previas. | Alta | Administrador
+RF-28 | El sistema contar� con un m�dulo centralizado de historial de modificaciones y bit�cora de auditor�a que registre de forma permanente el usuario, fecha, hora y valor anterior de cualquier cambio de asistencia realizado. | Alta | Sistema, Administrador
+TABLA 3
+ID | Categor�a | Descripci�n
+RNF-01 | Usabilidad | La interfaz debe ser intuitiva, clara y f�cil de comprender para docentes, de car�cter requerido y administradores.
+RNF-02 | Compatibilidad | El sistema debe funcionar correctamente en navegadores web modernos como Chrome, Edge, Firefox y Safari.
+RNF-03 | Seguridad | El sistema debe implementar autenticaci�n, almacenamiento mediante hash seguro y control de acceso basado en roles.
+RNF-04 | Dise�o responsivo | Las interfaces deben adaptarse a computadoras, tabletas y dispositivos m�viles mediante dise�o responsivo.
+RNF-05 | Integridad de datos | La base de datos debe mantener consistencia, disponibilidad y almacenamiento seguro de la informaci�n.
+RNF-06 | Rendimiento | Las consultas principales no deben superar tres segundos bajo condiciones normales de operaci�n acad�mica.
+RNF-07 | Disponibilidad | El sistema debe estar disponible durante el horario acad�mico establecido para pruebas y sustentaci�n.
+RNF-08 | Mantenibilidad | El codigo fuente debe estar organizado, comentado y versionado para facilitar correcciones.
+RNF-09 | Escalabilidad | La estructura debe permitir incorporar nuevas funcionalidades sin afectar significativamente los modulos existentes.
+RNF-10 | Respaldo | La base de datos debe permitir exportaciones y copias de seguridad manuales.
+RNF-11 | Autenticaci�n Segura | Las credenciales de acceso de los usuarios del sistema web se almacenar�n de forma obligatoria mediante un algoritmo de hash seguro utilizando la funci�n nativa password_hash() de PHP con soporte para BCRYPT.
+RNF-12 | Protecci�n de Sesiones | El sistema implementar� tokens de protecci�n CSRF (Cross-Site Request Forgery) en cada formulario l�dico, ejecutar� la regeneraci�n autom�tica del ID de sesi�n tras el inicio de sesi�n exitoso y establecer� un tiempo de expiraci�n por inactividad de 20 minutos.
+RNF-13 | Prevenci�n de Inyecciones SQL | Toda interacci�n del sistema con el motor de base de datos MySQL se realizar� estrictamente a trav�s de sentencias preparadas (Prepared Statements) utilizando PDO (PHP Data Objects).
+TABLA 4
+N� | Descripci�n | Costo Total Comercial (S/.)
+1 | Servicio de conectividad a Internet de alta velocidad | S/.200.00
+2 | Consumo de Energ�a El�ctrica para estaciones de trabajo | S/. 240.00
+3 | Impresiones de entregables, fotocopias y materiales de oficina | S/. 60.00
+4 | Herramientas de Software Libre (XAMPP, MySQL, Visual Studio Code) | S/. 0.00
+- | Subtotal de Recursos Operativos  | S/. 500.00
+TABLA 5
+Nombre y Firma | Responsabilidad
+Mg. Jeffer Harold Farro Regalado | Firma del Docente / 
+Zapata Guardia, Rildo Benjamin | Firma del Jefe de Proyecto / 
+Wong Bustamante, Martin Samuel | Firma del Integrante / 
+Trejo T�mara, Sugey Milagros | Firma del Integrante / 
+Gonz�les R�os, C�sar Andr� | Firma del Integrante / 
+Urrieta Milla, Dinora Jimena | Firma del Integrante
+
+### EDT_CONTROL_ASISTENCIA.docx
+INSTITUTO DE EDUCACI�N SUPERIOR TECNOL�GICO P�BLICO
+�V�ctor Ra�l Haya de la Torre�
+A�o de la Esperanza y el Fortalecimiento de la Democracia
+Tema:
+Estructura de Desglose del Trabajo (EDT)
+
+Integrantes:
+Wong Bustamante, Martin Samuel
+Trejo T�mara, Sugey Milagros 
+Gonz�les R�os, C�sar Andr� 
+Zapata Guardia, Rildo Benjamin 
+Urrieta Milla, Dinora Jimena
+Docente:
+Farro Regalado, Jeffer Harold
+Unidad Did�ctica:
+Desarrollo de Proyectos TI
+Ciclo:
+V � B
+2026-I
+�NDICE
+CAPITULO I
+ENUNCIADO DEL ALCANCE DEL PROYECTO
+ Nombre del Proyecto
+Implementaci�n del Sistema Web de Control de Asistencia de Estudiantes y Docentes para el IES P�blico "V�ctor Ra�l Haya de la Torre" (V 1.0). 
+ Descripci�n del Alcance del Proyecto
+El alcance abarca la ingenier�a, el dise�o arquitect�nico, la codificaci�n modular, el aseguramiento de la calidad y el despliegue del Sistema Web de Control de Asistencia. La soluci�n procesar� la infraestructura acad�mica del instituto, la automatizaci�n del registro de asistencia de estudiantes y docentes, el c�lculo algor�tmico restrictivo de la regla del 30% de inasistencias, la gesti�n de alertas, la bit�cora de auditor�a y la exportaci�n anal�tica de datos.
+.
+ Entregables Principales
+E-1 (Gesti�n del Proyecto): Actas de constituci�n, planes de gesti�n, actas de reuni�n semanales e informes de avance.
+E-2 (Ingenier�a de Requisitos) Documento de Especificaci�n de Requisitos de Software (SRS) que integra requerimientos funcionales, no funcionales y reglas de negocio detalladas.
+E-3 (Dise�o del Sistema): Prototipos e interfaces de usuario en Figma y el modelo f�sico/l�gico de la base de datos MySQL (Diagrama Entidad-Relaci�n y script estructural).
+E-4 (M�dulos de Software Integrados): Componentes funcionales backend y frontend para la Estructura Acad�mica, Control de Asistencia de Estudiantes (con validaci�n de la regla del 30%), Control de Asistencia de Docentes, Importaci�n masiva de datos (Excel/CSV), Reportes avanzados y Mantenimiento de respaldos.
+E-5 (Aseguramiento de la Calidad): Plan de pruebas formal, matriz de casos de prueba ejecutados, registro de incidencias y bit�cora de correcci�n de errores.
+E-6 (Cierre y Despliegue): Manual de usuario, manual t�cnico, archivo README descriptivo, c�digo fuente empaquetado en repositorio de control de versiones e informe final de entrega del sistema.
+ Criterio de Aceptaci�n
+Rendimiento: El procesamiento y almacenamiento de un registro de asistencia por aula no debe superar los 5 segundos en el entorno de ejecuci�n.
+Adaptabilidad: La interfaz de usuario debe ser 100% responsiva, garantizando su correcta visualizaci�n y uso desde dispositivos m�viles y de escritorio.
+Seguridad: El acceso a los m�dulos cr�ticos (gesti�n de usuarios y reportes acumulados) debe estar restringido exclusivamente a las credenciales validadas del rol administrativo.
+Entorno: El sistema finalizado debe ser completamente viable para ejecutarse de manera estable en un entorno local (XAMPP / Laragon).
+ Exclusiones del Proyecto
+Hardware: NO se incluir� la integraci�n ni compatibilidad con hardware biom�trico externo (lectores de huella dactilar, tarjetas electr�nicas o reconocimiento facial).
+Mobile: NO se incluye el desarrollo ni la compilaci�n de aplicaciones m�viles nativas para sistemas operativos Android o iOS.
+Mensajer�a: NO se contemplan servicios de notificaciones automatizadas a trav�s de pasarelas de mensajer�a externa (como SMS o la API de WhatsApp).
+Acad�mico: NO se desarrollar�n m�dulos externos de gesti�n acad�mica complementaria, tales como registro de notas, matr�culas o cobros administrativos.
+ Restricciones
+Cronograma: El proyecto cuenta con una fecha de entrega fija e improrrogable, debiendo completarse en su totalidad en un plazo m�ximo de 8 semanas acad�micas.
+Financiera: El desarrollo cuenta con un presupuesto operativo limitado a S/. 55.00, lo que condiciona al equipo al uso exclusivo de tecnolog�as de c�digo abierto y software de uso libre. Los S/.55 representan �nicamente los gastos reales desembolsados por el equipo. El modelo de costos incluye el valor econ�mico del recurso humano como costo estimado utilizando horas-hombre.
+Tecnol�gica: La programaci�n t�cnica est� restringida obligatoriamente al stack definido por la unidad did�ctica: PHP (backend), MySQL (base de datos), junto con HTML, CSS, Tailwind CSS y JavaScript (frontend).
+ Supuestos
+Se asume que el equipo de cinco estudiantes del ciclo V - B mantendr� disponibilidad constante de equipos de c�mputo aptos con los entornos locales debidamente configurados.
+Se asume que las autoridades del instituto proveer�n la informaci�n b�sica estructural de las aulas, alumnos y docentes en la fase inicial del an�lisis para estructurar la base de datos.
+Se cuenta con la asesor�a t�cnica y retroalimentaci�n peri�dica del docente a cargo del curso de Desarrollo de Proyectos TI para validar las fases del ciclo de vida del software.
+.
+CAPITULO II
+ESTRUCTURA DEL DESGLOSE DEL TRABAJO (EDT/WBS)
+ EDT Descriptivo
+La Estructura de Desglose del Trabajo (EDT) organiza de manera jer�rquica y en funci�n de los entregables finales el 100% del alcance del proyecto, dividi�ndose en fases organizativas y paquetes de trabajo medibles para el desarrollo de la plataforma web:
+Sistema Web de Control de Asistencia
+1.1. Gesti�n del Proyecto
+1.1.1. Acta de constituci�n y alcance aprobado
+1.1.2. Actas de reuni�n y registro de acuerdos
+1.1.3. Informes de avance y rendimiento del cronograma
+1.2. Ingenier�a e Interfaces
+1.2.1. Especificaci�n de requerimientos (Funcionales, No Funcionales y Reglas de Negocio)
+1.2.2. Dise�o de interfaces y mockups navegables (Figma)
+1.3. Dise�o de Arquitectura y Base de Datos
+1.3.1. Diagrama Entidad-Relaci�n y Relacional (MySQL)
+1.3.2. Script de base de datos f�sica y datos semilla
+1.4. Desarrollo de M�dulos Core (Backend / Frontend)
+1.4.1. M�dulo de Estructura Acad�mica (Programas, ciclos, unidades did�cticas, horarios y secciones)
+1.4.2. M�dulo de Asistencia Estudiantil y Algoritmo de la Regla del 30% (C�lculo, alertas y bloqueos)
+1.4.3. M�dulo de Asistencia Docente (Registro de sesiones de clase, estados y reportes de horas)
+1.4.4. M�dulo de Importaci�n Masiva (Procesamiento y validaci�n de datos Excel/CSV)
+1.4.5. M�dulo de Edici�n Limitada e Historial de Modificaciones (Auditor�a l�gica de cambios)
+1.4.6. M�dulo de Reportes Avanzados (Exportaci�n anal�tica en PDF y planillas Excel)
+1.4.7. M�dulo de Seguridad y Mantenimiento (Copia de seguridad y restauraci�n de la BD)
+1.5. Integraci�n y Aseguramiento de la Calidad (QA)
+1.5.1. Integraci�n de componentes (Frontend, Backend y Base de Datos)
+1.5.2. Plan de pruebas y matriz de casos de prueba
+1.5.3. Ejecuci�n de pruebas funcionales y registro de incidencias
+1.5.4. Correcci�n de errores y pruebas de regresi�n
+1.6. Cierre y Despliegue
+1.6.1. Configuraci�n del entorno y validaci�n final del sistema integrado
+1.6.2. Manual de usuario, manual t�cnico y archivo README
+1.6.3. Entrega del c�digo fuente final y repositorio de control de versiones
+1.6.4. Cierre administrativo e informe final
+ EDT Imagen
+ Diccionario de la EDT
+Acta de constituci�n y Alcance
+1.1. Gesti�n del Proyecto
+1.2. Ingenier�a e Interfaces
+Diagrama Entidad-Relaci�n y Relacional (MySQL) 
+1.3. Dise�o de Arquitectura y Base de Datos
+1.5. Integraci�n y Aseguramiento de la Calidad (QA)
+1.6. Cierre y Despliegue
+CAPITULO III
+CHECKLIST DE AUTOEVALUACI�N: VALIDACI�N DE LA EDT
+Instrucciones para el estudiante: Antes de entregar su Estructura de Desglose del Trabajo (EDT/WBS) al docente, re�nanse como equipo y respondan a las siguientes preguntas con total honestidad. Si marcan "NO" en alguna casilla, su EDT ser� rechazada autom�ticamente; apliquen la acci�n correctiva antes de presentarla.
+TABLA 1
+C�digo EDT | 1.1.1
+Nombre del Paquete | Acta de constituci�n y alcance aprobado
+Responsable Asignado | Jefe de Proyecto
+Objetivo General | Formalizar el inicio legal del proyecto y establecer las bases estrat�gicas, objetivos y l�mites funcionales acordados.
+Descripci�n del Alcance | Redacci�n, validaci�n y firma del Acta de Constituci�n del proyecto, incluyendo requerimientos de alto nivel y el presupuesto base operativo.
+Actividades Requeridas | 1. Recopilaci�n de informaci�n institucional. / 2. Definici�n preliminar de requerimientos y exclusiones. / 3. Revisi�n del documento con el evaluador y aprobaci�n final.
+Criterio de Aceptaci�n | Documento del Acta de Constituci�n debidamente estructurado y firmado/aprobado digitalmente por el asesor del proyecto.
+TABLA 2
+C�digo EDT | 1.1.2
+Nombre del Paquete | Actas de reuni�n y registro de acuerdos
+Responsable Asignado | Jefe de Proyecto
+Objetivo General | Garantizar el control de las minutas de coordinaci�n internas y externas para mantener la trazabilidad de los acuerdos tomados.
+Descripci�n del Alcance | Documentaci�n sistem�tica de cada sesi�n de alineamiento semanal del equipo y las revisiones directas con la c�tedra o usuarios.
+Actividades Requeridas | 1. Redacci�n de la agenda previa de cada reuni�n. / 2. Toma de apuntes de decisiones t�cnicas durante la sesi�n. / 3. Distribuci�n del acta firmada con la asignaci�n de tareas espec�ficas.
+Criterio de Aceptaci�n | Repositorio digital con el 100% de las actas de reuni�n cargadas en la nube, detallando participantes, acuerdos y fechas de entrega.
+TABLA 3
+C�digo EDT | 1.1.3
+Nombre del Paquete | Informes de avance y rendimiento del cronograma
+Responsable Asignado | Jefe de Proyecto
+Objetivo General | Monitorear el estado del proyecto evaluando posibles desviaciones frente a la ruta cr�tica del cronograma.
+Descripci�n del Alcance | Elaboraci�n peri�dica de reportes t�cnicos que analicen el avance f�sico de los entregables y el desempe�o de los tiempos de desarrollo.
+Actividades Requeridas | 1. Medici�n de los d�as reales consumidos por actividad. / 2. Evaluaci�n del estado de la holgura en el m�todo CPM. / 3. Formulaci�n de acciones preventivas o correctivas si existiese retraso.
+Criterio de Aceptaci�n | Informes mensuales de rendimiento t�cnico presentados formalmente, evidenciando coherencia con los hitos de la planificaci�n.
+TABLA 4
+C�digo EDT | 1.2.1
+Nombre del Paquete | Especificaci�n de requerimientos (Funcionales, No Funcionales y Reglas de Negocio)
+Responsable Asignado | Analista de Sistemas
+Objetivo General | Levantar, analizar y detallar rigurosamente los requerimientos del software bajo est�ndares internacionales de ingenier�a.
+Descripci�n del Alcance | Elaboraci�n del documento formal de requisitos (SRS) basado en la norma IEEE 830, detallando las reglas institucionales espec�ficas como el c�lculo del 30%.
+Actividades Requeridas | 1. Modelado de los casos de uso del sistema. / 2. Definici�n exhaustiva de los requerimientos funcionales y de seguridad. / 3. Especificaci�n detallada de la l�gica de negocio de la estructura acad�mica.
+Criterio de Aceptaci�n | Matriz de Especificaci�n de Requisitos completada, libre de ambig�edades y validada formalmente por el equipo de desarrollo.
+TABLA 5
+C�digo EDT | 1.2.2
+Nombre del Paquete | Dise�o de interfaces y mockups navegables (Figma)
+Responsable Asignado | Analista de Sistemas
+Objetivo General | Dise�ar la experiencia de usuario (UX) y los elementos visuales de la interfaz (UI) antes de iniciar la etapa de codificaci�n.
+Descripci�n del Alcance | Construcci�n de prototipos gr�ficos navegables de alta fidelidad para todas las pantallas del Administrador, Docente y Estudiante.
+Actividades Requeridas | 1. Dise�o de la arquitectura de informaci�n y flujos visuales. / 2. Maquetaci�n digital de los dashboards, tablas de asistencia y alertas en Figma. / 3. Validaci�n de la navegabilidad del prototipo interactivo.
+Criterio de Aceptaci�n | Enlace del prototipo interactivo de Figma funcional al 100%, mostrando de forma exacta la distribuci�n responsiva de los componentes.
+TABLA 6
+C�digo EDT | 1.3.1
+Nombre del Paquete | Diagrama Entidad-Relaci�n y Relacional (MySQL)
+Responsable Asignado | Dise�ador de Base de Datos
+Objetivo General | Modelar la estructura l�gica de los datos asegurando la integridad, normalizaci�n y �ptima relaci�n del sistema.
+Descripci�n del Alcance | Creaci�n del diagrama entidad-relaci�n detallando las tablas de estudiantes, docentes, asistencia, horarios y la estructura acad�mica.
+Actividades Requeridas | 1. Identificaci�n de entidades, atributos y cardinalidades. / 2. Aplicaci�n de las reglas de normalizaci�n hasta la tercera forma normal (3FN). / 3. Definici�n de claves primarias (PK) y for�neas (FK).
+Criterio de Aceptaci�n | Diagrama relacional exportado en formato de alta resoluci�n sin dependencias circulares ni redundancias l�gicas.
+TABLA 7
+C�digo EDT | 1.3.2
+Nombre del Paquete | Script de base de datos f�sica y datos semilla
+Responsable Asignado | Dise�ador de Base de Datos
+Objetivo General | Construir la base de datos f�sica en el gestor MySQL e insertar registros de prueba iniciales.
+Descripci�n del Alcance | Generaci�n del archivo estructurado SQL que contenga la creaci�n de tablas, �ndices, restricciones y datos iniciales para pruebas.
+Actividades Requeridas | 1. Escritura del script DDL para la generaci�n de la base de datos f�sica. / 2. Configuraci�n de restricciones de integridad referencial. / 3. Inserci�n de registros iniciales de prueba (datos semilla) para validaci�n.
+Criterio de Aceptaci�n | Archivo .sql ejecutable en el servidor MySQL local de manera limpia, sin errores de compilaci�n ni de sintaxis estructurada.
+TABLA 8
+C�digo EDT | 1.4.1
+Nombre del Paquete | M�dulo de Estructura Acad�mica
+Responsable Asignado | Programador
+Objetivo General | Desarrollar las interfaces y controladores para administrar los registros de la jerarqu�a educativa del instituto.
+Descripci�n del Alcance | Programaci�n de los flujos CRUD l�gicos de programas de estudio, per�odos, ciclos, unidades did�cticas, secciones, horarios y la asignaci�n docente.
+Actividades Requeridas | 1. Maquetaci�n frontend con Tailwind CSS de las vistas de administraci�n. / 2. Desarrollo del backend en PHP para el guardado y edici�n de datos acad�micos. / 3. Vinculaci�n l�gica con las tablas relacionales en MySQL.
+Criterio de Aceptaci�n | Mantenedores completamente operativos que permitan dar de alta una carga acad�mica y de horarios sin generar conflictos.
+TABLA 9
+C�digo EDT | 1.4.2
+Nombre del Paquete | M�dulo de Asistencia Estudiantil y Algoritmo de la Regla del 30%
+Responsable Asignado | Programador
+Objetivo General | Automatizar el control diario de asistencias de estudiantes e implementar de forma estricta las reglas de inasistencia acumulada.
+Descripci�n del Alcance | Programaci�n del panel de toma de asistencia masiva y desarrollo del backend encargado de ejecutar el algoritmo anal�tico del 30%.
+Actividades Requeridas | 1. Construcci�n de la interfaz de check-list din�mico por secci�n. / 2. Programaci�n del algoritmo en PHP para el c�lculo de porcentajes y bloqueos autom�ticos. / 3. Integraci�n del sistema visual de alertas cr�ticas en tiempo real.
+Criterio de Aceptaci�n | Validaci�n exacta donde al simular el 30% de faltas sobre un estudiante, el sistema cambie su estado a inhabilitado autom�ticamente.
+TABLA 10
+C�digo EDT | 1.4.3
+Nombre del Paquete | M�dulo de Asistencia Docente
+Responsable Asignado | Programador
+Objetivo General | Implementar la infraestructura l�gica para registrar la jornada y asistencia horaria del personal docente.
+Descripci�n del Alcance | Desarrollo de los flujos de registro de ingreso/salida de clases para docentes, gesti�n de estados y consolidado de horas mensuales.
+Actividades Requeridas | 1. Programaci�n del control de tiempos basado en la hora del servidor. / 2. Creaci�n del panel de justificaci�n de inasistencias para el administrador. / 3. Desarrollo del consolidado de horas dictadas.
+Criterio de Aceptaci�n | Funcionalidad completa del registro donde se calcule de forma exacta si el ingreso del docente califica como "Presente" o "Tardanza".
+TABLA 11
+C�digo EDT | 1.4.4
+Nombre del Paquete | M�dulo de Importaci�n Masiva
+Responsable Asignado | Programador
+Objetivo General | Proveer al sistema una herramienta �gil para la migraci�n e inserci�n de grandes vol�menes de datos iniciales.
+Descripci�n del Alcance | Desarrollo del script middleware encargado de leer, procesar e importar archivos estructurados Excel y CSV hacia la base de datos MySQL.
+Actividades Requeridas | 1. Construcci�n del componente de interfaz para la carga de archivos. / 2. Programaci�n en PHP del middleware de sanitizaci�n y validaci�n sint�ctica de datos. / 3. Inserci�n masiva limpia en la base de datos.
+Criterio de Aceptaci�n | Migraci�n exitosa de un padr�n de prueba de 100 estudiantes desde un archivo .csv sin p�rdida ni duplicidad de registros l�gicos.
+TABLA 12
+C�digo EDT | 1.4.5
+Nombre del Paquete | M�dulo de Edici�n Limitada e Historial de Modificaciones
+Responsable Asignado | Programador
+Objetivo General | Asegurar la inmutabilidad y la trazabilidad de los datos hist�ricos de asistencia ante cualquier alteraci�n de registros.
+Descripci�n del Alcance | Implementaci�n de restricciones de tiempo para edici�n y la bit�cora automatizada de auditor�a interna de la base de datos.
+Actividades Requeridas | 1. Programaci�n del bloqueo autom�tico de edici�n tras expirar el lapso permitido. / 2. Desarrollo del trigger o script en PHP para el almacenamiento del historial de cambios. / 3. Interfaz de consulta de auditor�a para el administrador.
+Criterio de Aceptaci�n | Registro permanente en la tabla de auditor�a de cualquier cambio en las asistencias, almacenando fecha, usuario y valores modificados.
+TABLA 13
+C�digo EDT | 1.4.6
+Nombre del Paquete | M�dulo de Reportes Avanzados
+Responsable Asignado | Programador
+Objetivo General | Suministrar informaci�n estructurada y consolidada a la administraci�n para los procesos de evaluaci�n y control institucional.
+Descripci�n del Alcance | Codificaci�n del sistema de exportaci�n nativa para la generaci�n de reportes espec�ficos por curso, docente y estudiante en formatos de impresi�n.
+Actividades Requeridas | 1. Integraci�n de librer�as para la generaci�n din�mica de archivos PDF. / 2. Programaci�n de scripts para la estructuraci�n de planillas en formato Excel (.xlsx). / 3. Construcci�n del dashboard de visualizaci�n de estad�sticas cr�ticas.
+Criterio de Aceptaci�n | Descarga e impresi�n correcta de los archivos PDF y Excel conteniendo informaci�n id�ntica a la almacenada en la base de datos f�sica.
+TABLA 14
+C�digo EDT | 1.4.7
+Nombre del Paquete | M�dulo de Seguridad y Mantenimiento
+Responsable Asignado | Programador
+Objetivo General | Proteger la continuidad operativa de la plataforma web frente a p�rdidas de informaci�n o brechas cr�ticas de seguridad.
+Descripci�n del Alcance | Desarrollo de herramientas administrativas locales para la ejecuci�n de respaldos l�gicos y la configuraci�n de capas defensivas web.
+Actividades Requeridas | 1. Programaci�n del script de clonaci�n y volcado de base de datos MySQL. / 2. Implementaci�n de las sentencias preparadas y funciones de hash seguro (password_hash). / 3. Integraci�n de tokens CSRF en los formularios.
+Criterio de Aceptaci�n | Generaci�n de una copia de seguridad v�lida descargable en formato comprimido .sql que pueda ser restaurada en caliente sin errores.
+TABLA 15
+C�digo EDT | 1.5.1
+Nombre del Paquete | Integraci�n de componentes (Frontend, Backend y Base de Datos)
+Responsable Asignado | Programador
+Objetivo General | Acoplar todas las capas l�gicas del sistema web garantizando un flujo de procesamiento integral y sin fisuras de comunicaci�n.
+Descripci�n del Alcance | Conexi�n definitiva de los componentes maquetados con los scripts l�gicos controladores en PHP y el almacenamiento en el servidor MySQL.
+Actividades Requeridas | 1. Enlace de los formularios frontend con el procesamiento backend. / 2. Verificaci�n de la consistencia de las variables globales de sesi�n web. / 3. Despliegue en el entorno local de pruebas unificado.
+Criterio de Aceptaci�n | El sistema web opera como una unidad �nica e integrada, permitiendo transitar de una pantalla a otra manteniendo la persistencia.
+TABLA 16
+C�digo EDT | 1.5.2
+Nombre del Paquete | Plan de pruebas y matriz de casos de prueba
+Responsable Asignado | Tester / Documentador
+Objetivo General | Planificar la estrategia t�cnica de validaci�n de calidad funcional que se aplicar� sobre los m�dulos del software.
+Descripci�n del Alcance | Elaboraci�n del documento rector del Plan de Testing y el dise�o detallado de la matriz conteniendo los casos de prueba de caja negra.
+Actividades Requeridas | 1. Definici�n del alcance de las pruebas l�gicas y de seguridad. / 2. Modelado de las entradas de datos, flujos esperados y salidas v�lidas para el login y control de faltas. / 3. Estructuraci�n formal del formato de reporte.
+Criterio de Aceptaci�n | Matriz de Casos de Prueba dise�ada en su totalidad y aprobada formalmente por la jefatura acad�mica y del proyecto.
+TABLA 17
+C�digo EDT | 1.5.3
+Nombre del Paquete | Ejecuci�n de pruebas funcionales y registro de incidencias
+Responsable Asignado | Tester / Documentador
+Objetivo General | Someter al sistema web a las pruebas planificadas para identificar cualquier comportamiento inesperado o bug en el c�digo.
+Descripci�n del Alcance | Ejecuci�n en el entorno local del listado completo de los casos de prueba y documentaci�n estricta de cualquier falla detectada en la bit�cora.
+Actividades Requeridas | 1. Ingreso de datos de prueba en las interfaces web integradas. / 2. Contraste de los resultados obtenidos frente a los te�ricos esperados. / 3. Registro clasificado por severidad de los fallos encontrados en la bit�cora de incidencias.
+Criterio de Aceptaci�n | Matriz de casos de prueba ejecutada completamente y bit�cora de incidencias consolidada con evidencias l�gicas.
+TABLA 18
+C�digo EDT | 1.5.4
+Nombre del Paquete | Correcci�n de errores y pruebas de regresi�n
+Responsable Asignado | Programador
+Objetivo General | Subsanar las incidencias reportadas por el �rea de QA y validar que los parches aplicados al c�digo no afecten funciones estables.
+Descripci�n del Alcance | Refactorizaci�n de las l�neas de c�digo afectadas por los bugs reportados y ejecuci�n de segundas pruebas de verificaci�n global (regresi�n).
+Actividades Requeridas | 1. An�lisis de causas e intervenci�n f�sica de los scripts en PHP con errores. / 2. Despliegue de las correcciones en el entorno local. / 3. Re-ejecuci�n del set completo de casos de prueba clave por parte del Tester.
+Criterio de Aceptaci�n | Cierre del 100% de las incidencias cr�ticas reportadas, alcanzando una tasa final m�nima de aprobaci�n del 95% en los casos de prueba.
+TABLA 19
+C�digo EDT | 1.6.1
+Nombre del Paquete | Configuraci�n del entorno y validaci�n final del sistema integrado
+Responsable Asignado | Programador
+Objetivo General | Preparar el entorno de producci�n local definitivo donde residir� la plataforma web de control de asistencia de forma permanente.
+Descripci�n del Alcance | Estabilizaci�n del servidor web (Apache), el motor de base de datos MySQL, variables finales del archivo de configuraci�n e inyecci�n final de la base de datos limpia.
+Actividades Requeridas | 1. Ajuste de par�metros de seguridad del entorno local PHP. / 2. Carga final del sistema web definitivo libre de archivos residuales de prueba. / 3. Ejecuci�n del humo de validaci�n operativa final.
+Criterio de Aceptaci�n | Sistema web completamente accesible desde la red local a trav�s del direccionamiento IP configurado y operando con normalidad.
+TABLA 20
+C�digo EDT | 1.6.2
+Nombre del Paquete | Manual de usuario, manual t�cnico y archivo README
+Responsable Asignado | Tester / Documentador
+Objetivo General | Proveer la documentaci�n t�cnica y operativa requerida para guiar el uso del software y facilitar mantenimientos futuros.
+Descripci�n del Alcance | Elaboraci�n del manual de usuario final explicativo con capturas de pantalla, manual t�cnico detallando la arquitectura y c�digo, y el archivo README.
+Actividades Requeridas | 1. Redacci�n paso a paso del flujo de control de asistencia para los docentes. / 2. Documentaci�n t�cnica del modelo relacional y dependencias del sistema. / 3. Creaci�n del archivo README detallando requisitos de instalaci�n local.
+Criterio de Aceptaci�n | Entregables documentales finalizados en formato digital nativo, claros, did�cticos y sin errores de redacci�n acad�mica.
+TABLA 21
+C�digo EDT | 1.6.3
+Nombre del Paquete | Entrega del c�digo fuente final y repositorio de control de versiones
+Responsable Asignado | Programador
+Objetivo General | Transferir de manera formal y ordenada los activos de c�digo fuente construidos durante el ciclo del proyecto.
+Descripci�n del Alcance | Consolidaci�n y empaquetado final de todas las carpetas, scripts e interfaces dentro de un repositorio estructurado de control de versiones.
+Actividades Requeridas | 1. Depuraci�n de comentarios temporales y c�digo muerto en los archivos. / 2. Consolidaci�n de la rama principal estable del repositorio. / 3. Exportaci�n y entrega f�sica/l�gica del instalador completo del sistema.
+Criterio de Aceptaci�n | C�digo fuente completo cargado en el repositorio, estructurado limpiamente y con libre acceso para los evaluadores t�cnicos.
+TABLA 22
+C�digo EDT | 1.6.4
+Nombre del Paquete | Cierre administrativo e informe final
+Responsable Asignado | Jefe de Proyecto
+Objetivo General | Dar por finalizado oficialmente el proyecto, resumiendo el cumplimiento total de los objetivos frente al cliente interno.
+Descripci�n del Alcance | Elaboraci�n del Informe de Cierre de Proyecto detallando m�tricas de �xito alcanzadas, lecciones aprendidas y el acta de conformidad final.
+Actividades Requeridas | 1. Evaluaci�n final de los criterios de �xito cuantitativos del proyecto. / 2. Redacci�n de la memoria t�cnica de lecciones aprendidas. / 3. Recopilaci�n de firmas y entrega del expediente completo al docente evaluador.
+Criterio de Aceptaci�n | Informe Final de Cierre aprobado por el Mg. Jeffer Harold Farro Regalado, sellando formalmente la culminaci�n de la fase.
+TABLA 23
+C�digo EDT | 1.6.5
+Nombre del Paquete | Sustentaci�n y presentaci�n del proyecto
+Responsable Asignado | Equipo de desarrollo (todos los integrantes)
+Objetivo General | Realizar la exposici�n, demostraci�n en vivo y defensa t�cnica del Sistema Web de Control de Asistencia ante el jurado evaluador, acreditando el cumplimiento de los requisitos y entregables del proyecto. 
+Descripci�n del Alcance | Contempla la preparaci�n del material audiovisual (diapositivas), la puesta a punto del entorno local de demostraci�n con datos de prueba, la ejecuci�n de la prueba funcional en vivo del software y la respuesta a la ronda de preguntas y observaciones formuladas por el jurado acad�mico. 
+Actividades Requeridas | Elaborar la presentaci�n ejecutiva en diapositivas con el resumen de la EDT, cronograma, arquitectura y costos.Configurar y validar el entorno local de demostraci�n (servidor, base de datos MySQL y usuarios de prueba).Efectuar ensayos previos de la exposici�n y flujo de navegaci�n de los m�dulos del sistema.Ejecutar la sustentaci�n oral y demostraci�n pr�ctica en tiempo real ante el jurado.Atender y absolver las consultas t�cnicas e imprevistos durante la ronda de preguntas. 
+Criterio de Aceptaci�n | Sustentaci�n concluida dentro del tiempo asignado, demostraci�n funcional del sistema web sin errores cr�ticos en vivo, y aprobaci�n formal por parte del jurado evaluador con el acta de calificaci�n correspondiente. 
+TABLA 24
+N� | Criterio de Evaluaci�n (Preg�ntense esto) | �Cumple? | Sustentaci�n T�cnica del Equipo (Evidencia)
+1 | Regla de los Sustantivos: �Todas las cajas de nuestra EDT tienen nombres de entregables (sustantivos) en lugar de tareas (verbos de acci�n)? | S� (X) / No ( ) | Se eliminaron por completo t�rminos operativos como "Configurar" o "Desarrollar". Todas las fichas y paquetes desde el 1.1.1 hasta el 1.6.4 utilizan sustantivos de entregables tangibles (ej. Matriz, Script, M�dulo, Manual).
+2 | Regla del 100%: �La suma de los paquetes de trabajo del nivel inferior equivale exactamente al 100% del nivel superior? (Ni m�s, ni menos). | S� (X) / No ( ) | Las 6 fases principales del Nivel 2 desglosan con exactitud los 21 paquetes de trabajo del Nivel 3. La suma de estos cubre la totalidad del alcance acordado del ciclo de vida del software sin dejar cabos sueltos.
+3 | Coherencia con el Alcance: �Est�n presentes en la EDT absolutamente TODOS los entregables que prometimos en nuestro "Enunciado del Alcance"? | S� (X) / No ( ) | Existe una correlaci�n exacta con el alcance del proyecto. Se incluyeron expl�citamente el m�dulo de la regla del 30% de inasistencias, importaci�n masiva Excel/CSV, auditor�a de asistencias y el paquete de integraci�n web.
+4 | Respeto a las Exclusiones: �Estamos 100% seguros de que no hay ninguna caja en la EDT que incluya algo que colocamos en la lista de "Exclusiones"? | S� (X) / No ( ) | Se verific� que exclusiones cr�ticas como la adquisici�n de servidores f�sicos, el despliegue en la nube (hosting externo) o el mantenimiento post-entrega no posean ning�n paquete de trabajo ni c�digo asociado en la estructura.
+5 | Gesti�n del Proyecto: �Existe una rama principal (Nivel 2) dedicada exclusivamente al papeleo y la "Gesti�n del Proyecto"? | S� (X) / No ( ) | Se audit� el diccionario y cada entregable cuenta con un �nico responsable que pertenece a los 5 roles oficiales definidos: Jefe de Proyecto, Analista de Sistemas, Dise�ador de Base de Datos, Programador o Tester.
+6 | Nivel de Detalle (Estimaci�n): Viendo las cajas del �ltimo nivel (los Paquetes de Trabajo), �es posible asignarles un costo en Soles y un tiempo en d�as de forma realista? | S� (X) / No ( ) | La EDT se descompuso hasta un tercer nivel jer�rquico. Cada paquete final (como el script de base de datos o el m�dulo de reportes) representa una unidad medible y acotada, lo que permite estimar su esfuerzo de manera independiente.
+7 | Independencia de las Cajas: �Cada paquete de trabajo del nivel inferior es �nico y no se repite en otra rama de la EDT? | S� (X) / No ( ) | Se resolvi� la redundancia del esquema original. Cada paquete posee un c�digo WBS �nico e irrepetible (del 1.1.1 al 1.6.4) con fronteras de trabajo perfectamente delimitadas y objetivos espec�ficos.
+
+### CRONOGRAMA_CONTROL_ASISTENCIA.docx
+INSTITUTO DE EDUCACI�N SUPERIOR TECNOL�GICO P�BLICO 
+�V�ctor Ra�l Haya de la Torre� 
+A�o de la Esperanza y el Fortalecimiento de la Democracia 
+Tema: 
+GESTI�N DEL CRONOGRAMA DEL PROYECTO
+Integrantes: 
+Wong Bustamante, Martin Samuel 
+Trejo T�mara, Sugey Milagros 
+Gonz�les R�os, C�sar Andr� 
+Zapata Guardia, Rildo Benjamin 
+Urrieta Milla, Dinora Jimena 
+Docente: 
+Farro Regalado, Jeffer Harold
+Unidad Did�ctica: 
+Desarrollo de Proyectos TI 
+Ciclo: 
+V � B 
+CAPITULO IV
+CRONOGRAMA DEL PROYECTO
+Lista de Hitos del Proyecto
+Un hito representa un punto de control significativo o la entrega de un componente cr�tico dentro del ciclo de vida de desarrollo de la plataforma web. No posee duraci�n asignada (0 d�as) y sirve de gu�a para verificar que las fases se cumplan en los plazos acad�micos establecidos de 8 semanas.
+A continuaci�n, se detallan los hitos clave para el Sistema Web de Control de Asistencia del IES "V�ctor Ra�l Haya de la Torre":
+Atributos y secuenciaci�n de actividades
+En esta matriz se transforman los paquetes de trabajo est�ticos de la EDT en actividades din�micas iniciadas por verbos de acci�n, definiendo sus duraciones estimadas, dependencias l�gicas y tipos de relaci�n seg�n el m�todo de diagramaci�n por precedencia (PDM).
+Diagrama de Red L�gico y Ruta Critica (PDM)
+El flujo secuencial del proyecto evidencia una divisi�n clara del trabajo t�cnico en frentes paralelos tras la definici�n de requisitos, confluyendo en hitos obligatorios de integraci�n y pruebas antes del cierre final: 
+Calculo de La Ruta Critica (CPM � Critical Path Method)
+Aplicando las pasadas matem�ticas hacia adelante y hacia atr�s, determinamos los tiempos de Inicio Temprano (ES), T�rmino Temprano (EF), Inicio Tard�o (LS), T�rmino Tard�o (LF) y la Holgura Total (H) de cada actividad.
+ES (Early Start): D�a m�s pr�ximo en que puede iniciar la actividad.
+EF (Early Finish): D�a m�s pr�ximo en que termina la actividad (ES + Duraci�n).
+LS (Late Start): D�a m�s tard�o en que puede iniciar la actividad sin retrasar el proyecto.
+LF (Late Finish): D�a m�s tard�o en que puede terminar la actividad (LS + Duraci�n).
+Holgura (H): Margen de tiempo disponible (LS - ES o LF - EF).
+Diagrama de Gantt
+El Diagrama de Gantt es la herramienta gr�fica que permite planificar, programar y realizar el seguimiento de las actividades del proyecto TI. A continuaci�n, se presenta la distribuci�n temporal de los entregables estructurados para el Sistema Web de Control de Asistencia a lo largo de las 8 semanas de ejecuci�n:
+Firma del Equipo:
+Entendemos que cualquier retraso en las actividades de nuestra Ruta Cr�tica provocar� un
+incumplimiento de la fecha de entrega final, y nos comprometemos a monitorear estas
+tareas con prioridad.
+TABLA 1
+ID Hito | Nombre del Hito | Momento de Cumplimiento / Criterio de Aceptaci�n | Predecesora
+H-01 | Inicio Oficial del Proyecto | Acta de Constituci�n y alcance firmada formalmente por el equipo y stakeholders. | A-01
+H-02 | Ingenier�a de Requisitos e Interfaces Congelada | Especificaci�n IEEE 830 y prototipos UI/UX en Figma validados al 100%. | A-04 y A-05 
+H-03 | Arquitectura y Base de Datos F�sica Lista | Script DDL ejecutado; tablas, relaciones y datos semilla mapeados en MySQL. | A-07
+H-04 | M�dulos Core del Software Desarrollados | Backend en ejecuci�n funcional integrado con las reglas l�gicas del sistema. | A-09, A-10, A-11, A-12, A-13 y A-14. 
+H-05 | Aseguramiento de la Calidad (QA) Concluido | Matriz de pruebas de caja negra y regresi�n cerradas con cero (0) bugs cr�ticos. | A-21
+H-06 | Sistema Desplegado y Activos Entregados | Sistema web operativo en entorno de producci�n local con manuales listos. | A-22, A-23 y A-24. 
+H-07 | Cierre Formal y Sustentaci�n Aprobada | Informe final administrativo cerrado y sustentaci�n ante el jurado acad�mico. | A-25, A-26 y A-27. 
+TABLA 2
+ID Act. | Actividad (Verbo + Sustantivo) | Origen EDT | Duraci�n (D�as) | Predecesora(s) | Tipo de Relaci�n / Notas
+A-01 | Redactar el acta de constituci�n y alcance del proyecto | 1.1.1 | 3 d�as | Ninguna | Inicio del Proyecto
+A-02 | Monitorear la gesti�n del proyecto, riesgos y control | 1.1.3 | 40 d�as | A-01 (Inicio) | Tarea Transversal (Hammock)
+A-03 | Ejecutar reuniones peri�dicas de avance y firmar acuerdos | 1.1.2 | 40 d�as | A-01 (Inicio) | Tarea Transversal (Hammock)
+A-04 | Levantar y especificar requisitos de software (IEEE 830) | 1.2.1 | 4 d�as | A-01 | FS (Final a Inicio)
+A-05 | Dise�ar prototipos visuales de interfaces (UI/UX) en Figma | 1.2.2 | 3 d�as | A-04 | FS (Final a Inicio)
+A-06 | Dise�ar el modelo de datos conceptual, l�gico y f�sico | 1.3.1 | 2 d�as | A-04 | FS (Final a Inicio)
+A-07 | Construir el script f�sico SQL DDL e insertar datos semilla | 1.3.2 | 2 d�as | A-06 | FS (Final a Inicio)
+A-08 | Desarrollar el M�dulo de Estructura Acad�mica | 1.4.1 | 3 d�as | A-05, A-07 | FS (Convergencia t�cnica)
+A-09 | Programar M�dulo de Asistencia Estudiantil y regla del 30% | 1.4.2 | 4 d�as | A-08 | FS (Final a Inicio)
+A-10 | Programar M�dulo de Asistencia Docente y registro horario | 1.4.3 | 3 d�as | A-08 | FS (Final a Inicio)
+A-11 | Codificar la carga masiva de datos (M�dulo Importaci�n) | 1.4.4 | 2 d�as | A-08 | FS (Final a Inicio)
+A-12 | Programar M�dulo de Edici�n Limitada e Historial | 1.4.5 | 2 d�as | A-09, A-10 | FS (Convergencia l�gica)
+A-13 | Desarrollar componentes del M�dulo de Reportes Avanzados | 1.4.6 | 2 d�as | A-12 | FS (Final a Inicio)
+A-14 | Implementar M�dulo de Seguridad, Roles y Respaldos | 1.4.7 | 2 d�as | A-07 | FS (Holgura de desarrollo)
+A-15 | Integrar componentes del sistema (Front, Back y BD) | 1.5.1 | 2 d�as | A-11, A-13, A-14 | FS (Convergencia de frentes)
+A-16 | Dise�ar el plan estrat�gico y matriz de casos de prueba | 1.5.2 | 2 d�as | A-05 | FS (Final a Inicio)
+A-17 | Ejecutar pruebas funcionales del sistema (Caja Negra) | 1.5.3 | 2 d�as | A-15, A-16 | FS (Inicio de Fase QA)
+A-18 | Registrar incidencias y fallos detectados en el sistema | 1.5.3 | 1 d�a | A-17 | FS (Final a Inicio)
+A-19 | Corregir errores de c�digo y aplicar refactorizaciones | 1.5.4 | 2 d�as | A-18 | FS (Final a Inicio)
+A-20 | Ejecutar pruebas de regresi�n t�cnica sobre el sistema | 1.5.4 | 1 d�a | A-19 | FS (Final a Inicio)
+A-21 | Realizar validaci�n final del software con el usuario | 1.5.4 | 1 d�a | A-20 | FS (Final a Inicio)
+A-22 | Desplegar el sistema en el entorno de producci�n local | 1.6.1 | 2 d�as | A-21 | FS (Final a Inicio)
+A-23 | Redactar manuales de usuario, t�cnicos y documentaci�n | 1.6.2 | 3 d�as | A-22 | FS (Final a Inicio)
+A-24 | Empaquetar c�digo fuente y transferir repositorio final | 1.6.3 | 1 d�a | A-22 | FS (Final a Inicio)
+A-25 | Consolidar el informe final y cierre administrativo | 1.6.4 | 2 d�as | A-23, A-24 | FS (Cierre t�cnico)
+A-26 | Reserva de tiempo para contingencias y revisiones.  | 1.6.4 | 1 d�a | A-25 | FS (Colch�n de contingencia)
+A-27 | Realizar la sustentaci�n final ante el jurado del instituto | 1.6.4 | 1 d�a | A-26 | FS (Hito de Fin Acad�mico)
+TABLA 3
+ID Act. | Duraci�n (d) | Inicio Temprano (ES) | T�rmino Temprano (EF) | Inicio Tard�o (LS) | T�rmino Tard�o (LF) | Holgura (H) | �Es Cr�tica?
+A-01 | 3 | 0 | 3 | 0 | 3 | 0 | S�
+A-02 | 40 | 0 | 40 | 0 | 40 | 0 | S� (Trans.)
+A-03 | 40 | 0 | 40 | 0 | 40 | 0 | S� (Trans.)
+A-04 | 4 | 3 | 7 | 3 | 7 | 0 | S�
+A-05 | 3 | 7 | 10 | 8 | 11 | 1 | NO
+A-06 | 2 | 7 | 9 | 7 | 9 | 0 | S�
+A-07 | 2 | 9 | 11 | 9 | 11 | 0 | S�
+A-08 | 3 | 11 | 14 | 11 | 14 | 0 | S�
+A-09 | 4 | 14 | 18 | 14 | 18 | 0 | S�
+A-10 | 3 | 14 | 17 | 15 | 18 | 1 | NO
+A-11 | 2 | 14 | 16 | 16 | 18 | 2 | NO
+A-12 | 2 | 18 | 20 | 18 | 20 | 0 | S�
+A-13 | 2 | 20 | 22 | 20 | 22 | 0 | S�
+A-14 | 2 | 11 | 13 | 20 | 22 | 9 | NO
+A-15 | 2 | 22 | 24 | 22 | 24 | 0 | S�
+A-16 | 2 | 10 | 12 | 22 | 24 | 12 | NO
+A-17 | 2 | 24 | 26 | 24 | 26 | 0 | S�
+A-18 | 1 | 26 | 27 | 26 | 27 | 0 | S�
+A-19 | 2 | 27 | 29 | 27 | 29 | 0 | S�
+A-20 | 1 | 29 | 30 | 29 | 30 | 0 | S�
+A-21 | 1 | 30 | 31 | 30 | 31 | 0 | S�
+A-22 | 2 | 31 | 33 | 31 | 33 | 0 | S�
+A-23 | 3 | 33 | 36 | 33 | 36 | 0 | S�
+A-24 | 1 | 33 | 34 | 35 | 36 | 2 | NO
+A-25 | 2 | 36 | 38 | 36 | 38 | 0 | S�
+A-26 | 1 | 38 | 39 | 38 | 39 | 0 | S�
+A-27 | 1 | 39 | 40 | 39 | 40 | 0 | S�
+TABLA 4
+Nombre y Firma | Responsabilidad
+Zapata Guardia, Rildo Benjamin | Firma del Jefe de Proyecto / 
+Wong Bustamante, Martin Samuel | Firma del Integrante / 
+Trejo T�mara, Sugey Milagros | Firma del Integrante / 
+Gonz�les R�os, C�sar Andr� | Firma del Integrante / 
+Urrieta Milla, Dinora Jimena | Firma del Integrante
+
+### MODELO DE COSTO � SISTEMA WEB DE CONTROL DE ASISTENCIA.docx
+INSTITUTO DE EDUCACI�N SUPERIOR TECNOL�GICO P�BLICO 
+�V�ctor Ra�l Haya de la Torre� 
+A�o de la Esperanza y el Fortalecimiento de la Democracia 
+Tema: 
+MODELO DE COSTO � SISTEMA WEB DE CONTROL DE ASISTENCIA
+Integrantes: 
+Wong Bustamante, Martin Samuel 
+Trejo T�mara, Sugey Milagros 
+Gonz�les R�os, C�sar Andr� 
+Zapata Guardia, Rildo Benjamin 
+Urrieta Milla, Dinora Jimena 
+Docente: 
+Farro Regalado, Jeffer Harold
+Unidad Did�ctica: 
+Desarrollo de Proyectos TI 
+Ciclo: 
+V � B 
+CAPITULO V
+COSTO DEL PROYECTO
+Definici�n de Tarifas y Costos Fijos
+Para cuantificar financieramente el esfuerzo requerido para el desarrollo del sistema, se establecen los valores base asignados tanto al talento humano del equipo desarrollador como a los insumos log�sticos operativos m�nimos en un entorno local de desarrollo. 
+Cuadro de Tarifas de Recurso Humanos
+De acuerdo con los roles definidos en el Acta de Constituci�n y los perfiles de los integrantes del equipo de desarrollo, se determinan las siguientes tarifas horarias est�ndar en soles (S/):
+Cuadro de Recursos Operativos (Costos Fijos)
+Costos fijos mensuales prorrateados para el soporte de la infraestructura de desarrollo durante los 40 d�as (2 meses) de ejecuci�n del proyecto:
+Estimaci�n Ascendente por Actividad (BOTTOM-UP)
+C�lculo exacto por actividad 8 horas-persona por cada d�a de duraci�n. Se omiten del c�lculo de costo las actividades de soporte transversal A-02 y A-03 para evitar la duplicidad del esfuerzo ya cubierto en las asignaciones de desarrollo y gesti�n directa. 
+�Las actividades A-02 y A-03 son actividades transversales de seguimiento. Su esfuerzo se considera incluido dentro de las horas de gesti�n del proyecto y no se adiciona como costo independiente para evitar doble contabilizaci�n.� 
+. 
+Consolidaci�n del presupuesto y reservas
+Distribuci�n consolidada del costo de personal por cada rol participante:
+Justificaci�n Financiera
+La implementaci�n del Sistema Web de Control de Asistencia representa una inversi�n de S/ 15,960.00 (Presupuesto Total del Proyecto). Su viabilidad financiera se justifica s�lidamente mediante la reducci�n de costos operativos y la optimizaci�n del tiempo administrativo del personal del instituto:
+5.4.1. An�lisis de Retorno de Inversi�n (ROI) y Beneficios Econ�micos
+Eliminaci�n de Costos de Materiales (Papel e Impresi�n): Actualmente, el control manual mediante partes f�sicos genera un gasto recurrente en papeler�a, fotocopias y archivadores. Al digitalizar el proceso y utilizar un entorno de producci�n y hosting gratuito en la nube (S/ 0.00), el costo log�stico de alojamiento e infraestructura se reduce al m�nimo, acelerando el retorno del valor del software.
+Recuperaci�n de Horas-Hombre del Personal Administrativo y Docente:
+Docentes: El registro f�sico y c�lculo manual de la regla del 30% de inasistencias consume 10 minutos por sesi�n. El sistema web automatiza este c�lculo con un solo clic, ahorrando cientos de horas de labor.
+�rea Administrativa: La consolidaci�n de reportes al final del ciclo toma cerca de 72 horas de revisi�n manual. Con la base de datos relacional MySQL, este procesamiento se realiza de manera inmediata, liberando al personal para otras tareas de valor.
+An�lisis de Retorno de Inversi�n (ROI) Estimado:
+Considerando que los beneficios anuales combinados por digitalizaci�n y ahorro de tiempo se estiman en S/ 10,800.00 al a�o para el instituto (S/ 900.00 mensuales):
+Primer a�o:
+
+Defensa de Tarifas en Actividades Criticas 
+El presupuesto de recursos humanos asigna las tarifas seg�n el nivel de responsabilidad requerido en las actividades que componen la ruta cr�tica del proyecto:
+Director de Proyecto: Lidera las actividades de arranque, control y cierre (A-01, A-02 y A-12). Su tarifa se justifica por asegurar que los entregables se completen estrictamente dentro del l�mite de las 8 semanas acad�micas.  
+Analista de Base de Datos: Dise�a y configura el modelo de datos relacional (A-03 y A-05). Se requiere un perfil especializado para normalizar las tablas en MySQL, evitando duplicidades y garantizando un rendimiento �ptimo de las consultas.  
+Desarrollador Backend: Programa la l�gica de negocio y el control de accesos (A-06 y A-07). Es el responsable de codificar en PHP el c�lculo matem�tico del porcentaje de inasistencias en tiempo real, previniendo vulnerabilidades de seguridad.  
+Este enfoque de tarifas asim�tricas concentra el esfuerzo financiero en asegurar que los cimientos l�gicos, de seguridad y de base de datos del software queden perfectamente blindados.  
+Firma del Equipo:
+Validamos que los c�lculos realizados reflejan el esfuerzo t�cnico real estimado para cumplir con el alcance del proyecto, y nos comprometemos a ejecutar el desarrollo dentro de la L�nea Base de Costos trazada.
+TABLA 1
+Rol / Cargo | Tarifa por Hora (S/) | Tarifa por D�a (8 h) (S/)
+Jefe de Proyecto | S/ 40.00 | S/ 320.00
+Analista de Sistemas. | S/ 30.00 | S/ 240.00
+Programador (Backend & Frontend) | S/ 35.00 | S/ 280.00
+Administrador de Base de Datos (DBA) | S/ 35.00 | S/ 280.00
+TABLA 2
+Recurso Operativo | Detalle T�cnico / Proveedor | Costo Mensual (S/) | Costo Total (2 meses) (S/)
+Servicio de Internet | Fibra �ptica 200 Mbps (Claro/Movistar) | S/ 100.00 | S/ 200.00
+Energ�a El�ctrica | Consumo de estaciones de trabajo (Enel) | S/ 120.00 | S/ 240.00
+Impresiones y �tiles | Papeler�a, informes y manuales de entrega | S/ 30.00 | S/ 60.00
+Servicio de Hosting | Infinite Tree | S/ 0.00  | S/ 0.00
+SUBTOTAL RECURSOS OPERATIVOS |  |  | S/ 500.00
+TABLA 3
+ID Act. | Actividad (Verbo + Sustantivo) | Responsable Asignado | Duraci�n (D�as) | Horas-Persona | Tarifa (S/) | Costo de Actividad (S/)
+A-01 | Redactar el acta de constituci�n y alcance | Tester/Documentador  | 2 | 24 | 40 | 960
+A-04 | Levantar y especificar requisitos (IEEE 830) | Analista de Sistemas. | 2 | 32 | 30 | 960
+A-05 | Dise�ar prototipos visuales (UI/UX) en Figma | Analista de Sistemas. | 2 | 24 | 30 | 720
+A-06 | Dise�ar el modelo de datos conceptual y l�gico | Administrador de BD (DBA) | 2 | 16 | 35 | 560
+A-07 | Construir el script f�sico SQL DDL | Administrador de BD (DBA) | 2 | 16 | 35 | 560
+A-08 | Desarrollar el M�dulo de Estructura Acad�mica | Programador | 2 | 24 | 35 | 840
+A-09 | Programar M�dulo de Asistencia Estudiantil | Programador | 2 | 32 | 35 | 1120
+A-10 | Programar M�dulo de Asistencia Docente | Programador | 2 | 24 | 35 | 840
+A-11 | Codificar la carga masiva de datos | Programador | 2 | 16 | 35 | 560
+A-12 | Programar M�dulo de Edici�n e Historial | Programador | 1 | 16 | 35 | 560
+A-13 | Desarrollar el M�dulo de Reportes Avanzados | Programador | 1 | 16 | 35 | 560
+A-14 | Implementar M�dulo de Seguridad y Roles | Programador | 1 | 16 | 35 | 560
+A-15 | Integrar componentes (Front, Back y BD) | Programador | 1 | 16 | 35 | 560
+A-16 | Dise�ar el plan y casos de prueba QA | Analista de Sistemas. | 1 | 16 | 30 | 480
+A-17 | Ejecutar pruebas funcionales (Caja Negra) | Analista de Sistemas. | 2 | 16 | 30 | 480
+A-18 | Registrar incidencias y fallos detectados | Analista de Sistemas. | 1 | 12 | 30 | 360
+A-19 | Corregir errores de c�digo y refactorizar | Programador | 2 | 16 | 35 | 560
+A-20 | Ejecutar pruebas de regresi�n t�cnica | Analista de Sistemas. | 1 | 8 | 30 | 240
+A-21 | Realizar validaci�n final con el usuario | Analista de Sistemas. | 1 | 8 | 30 | 240
+A-22 | Desplegar el sistema en el entorno local | Programador | 2 | 20 | 35 | 700
+A-23 | Redactar manuales de usuario y t�cnicos | Tester/Documentador  | 2 | 24 | 30 | 720
+A-24 | Empaquetar c�digo y transferir repositorio | Programador | 1 | 12 | 35 | 420
+A-25 | Consolidar informe final y cierre admin. | Jefe de Proyecto.  | 2 | 24 | 40 | 960
+A-26 | Ejecutar reservas para revisiones internas | Jefe de Proyecto.  | 1 | 12 | 40 | 480
+A-27 | Realizar sustentaci�n final ante el jurado | Equipo de Desarrollo (todos los integrantes) | 1 | 8 | 57.5 | 460 / (acuerdo interno)
+TOTAL | RECURSO HUMANO DIRECTO (HH) |   | 40 d | 448 |   | S/ 15,460.00 /  
+TABLA 4
+Componente del Presupuesto | Descripci�n / Concepto T�cnico | Monto Asignado (S/) | Componente del Presupuesto
+Costo de Recursos Humanos | Sumatoria del esfuerzo de desarrollo t�cnico (448  horas-persona). | S/ 15,460.00. | Costo de Recursos Humanos
+Recursos Operativos (Costos Fijos) | Gastos fijos log�sticos indispensables (Internet, luz y �tiles). | S/ 500.00 | Recursos Operativos (Costos Fijos)
+Servicio de Hosting de Producci�n | Servidor web gratuito en la nube para fines de demostraci�n acad�mica. | S/ 0.00 | Servicio de Hosting de Producci�n
+L�NEA BASE DE COSTOS (Monto Base) | Suma de Costos Directos + Costos Fijos. | S/ 15,960.00 | L�NEA BASE DE COSTOS (Monto Base)
+TABLA 5
+Nombre y Firma | Responsabilidad
+Zapata Guardia, Rildo Benjamin | Firma del Jefe de Proyecto / 
+Wong Bustamante, Martin Samuel | Firma del Integrante / 
+Trejo T�mara, Sugey Milagros | Firma del Integrante / 
+Gonz�les R�os, C�sar Andr� | Firma del Integrante / 
+Urrieta Milla, Dinora Jimena | Firma del Integrante

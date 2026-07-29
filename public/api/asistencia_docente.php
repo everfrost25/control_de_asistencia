@@ -29,10 +29,16 @@ if (!$data || empty($data['sesion_id']) || empty($data['estado'])) {
 
 $sesion_id = (int) $data['sesion_id'];
 $estado = trim($data['estado']);
-$docente_id = (int) $user['id'];
+$docente = fetch_one('SELECT id FROM docentes WHERE usuario = ? AND estado = ?', [$user['usuario'], 'Activo']);
+if (!$docente) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Perfil docente activo no encontrado.']);
+    exit;
+}
+$docente_id = (int) $docente['id'];
 
 // Validar estado
-if (!in_array($estado, ['Presente', 'Tardanza', 'Inasistencia', 'Inasistencia Justificada'])) {
+if (!in_array($estado, ['Presente', 'Tardanza', 'Inasistente', 'Justificado'], true)) {
     http_response_code(400);
     echo json_encode(['error' => 'Estado de asistencia inválido.']);
     exit;
@@ -44,7 +50,7 @@ try {
     $pdo->beginTransaction();
 
     // Verificar que la sesión existe y pertenece al docente
-    $sesion = fetch_one('SELECT id FROM sesiones WHERE id = ? AND docente_id = ?', [$sesion_id, $docente_id]);
+    $sesion = fetch_one('SELECT id, fecha FROM sesiones WHERE id = ? AND docente_id = ?', [$sesion_id, $docente_id]);
     if (!$sesion) {
         throw new Exception('La sesión indicada no existe o no te pertenece.');
     }
@@ -57,10 +63,8 @@ try {
     }
 
     // Registrar asistencia (CURRENT_TIME se maneja implícitamente o pasamos date)
-    $hora_ingreso = date('H:i:s');
-    
-    $stmt = $pdo->prepare('INSERT INTO asistencia_docentes (docente_id, sesion_id, hora_ingreso, estado) VALUES (?, ?, ?, ?)');
-    $stmt->execute([$docente_id, $sesion_id, $hora_ingreso, $estado]);
+    $stmt = $pdo->prepare('INSERT INTO asistencia_docentes (docente_id, sesion_id, fecha, hora_ingreso, estado, registrado_por) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$docente_id, $sesion_id, $sesion['fecha'], date('H:i:s'), $estado, $user['nombre']]);
 
     $pdo->commit();
     echo json_encode(['success' => true, 'message' => 'Asistencia registrada correctamente.']);

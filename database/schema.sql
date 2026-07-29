@@ -13,26 +13,31 @@ DROP TABLE IF EXISTS `asistencia_docentes`;
 CREATE TABLE `asistencia_docentes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `docente_id` int(11) NOT NULL,
+  `sesion_id` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `estado` enum('Presente','Inasistente') NOT NULL,
+  `hora_ingreso` time NOT NULL,
+  `estado` enum('Presente','Inasistente','Tardanza','Justificado') NOT NULL,
   `registrado_por` varchar(160) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_asistencia_docente_sesion` (`docente_id`,`sesion_id`),
   KEY `docente_id` (`docente_id`),
-  CONSTRAINT `asistencia_docentes_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `sesion_id` (`sesion_id`),
+  CONSTRAINT `asistencia_docentes_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `asistencia_docentes_ibfk_2` FOREIGN KEY (`sesion_id`) REFERENCES `sesiones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `asistencia_docentes` (`id`, `docente_id`, `fecha`, `estado`, `registrado_por`, `created_at`) VALUES
-('1', '1', '2026-07-16', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('2', '1', '2026-07-17', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('3', '1', '2026-07-18', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('4', '1', '2026-07-19', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('5', '1', '2026-07-20', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('6', '1', '2026-07-21', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('7', '1', '2026-07-22', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('8', '1', '2026-07-23', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('9', '1', '2026-07-24', 'Presente', 'admin', '2026-07-26 09:36:57'),
-('10', '1', '2026-07-25', 'Presente', 'admin', '2026-07-26 09:36:57');
+INSERT INTO `asistencia_docentes` (`id`, `docente_id`, `sesion_id`, `fecha`, `hora_ingreso`, `estado`, `registrado_por`, `created_at`) VALUES
+('1', '1', '1', '2026-07-16', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('2', '1', '2', '2026-07-17', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('3', '1', '3', '2026-07-18', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('4', '1', '4', '2026-07-19', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('5', '1', '5', '2026-07-20', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('6', '1', '6', '2026-07-21', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('7', '1', '7', '2026-07-22', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('8', '1', '8', '2026-07-23', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('9', '1', '9', '2026-07-24', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57'),
+('10', '1', '10', '2026-07-25', '08:00:00', 'Presente', 'admin', '2026-07-26 09:36:57');
 
 -- ------------------------------------------------------------
 -- Table: `asistencias`

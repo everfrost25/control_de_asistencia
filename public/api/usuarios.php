@@ -118,7 +118,7 @@ try {
             if (!$id) throw new Exception('ID requerido');
 
             // Generar clave temporal (ej. 123456)
-            $newPassword = 'password123';
+            $newPassword = rtrim(strtr(base64_encode(random_bytes(12)), '+/', '-_'), '=');
             $hash = password_hash($newPassword, PASSWORD_DEFAULT);
 
             $stmt = $pdo->prepare('UPDATE usuarios SET password_hash = ? WHERE id = ?');

@@ -453,8 +453,8 @@ $base = base_url('index.php?m=asistencia');
                     <select class="form-control doc-estado text-xs" style="min-width:130px">
                         <option value="Presente">Presente</option>
                         <option value="Tardanza">Tardanza</option>
-                        <option value="Inasistencia">Inasistencia</option>
-                        <option value="Inasistencia Justificada">Justificada</option>
+                        <option value="Inasistente">Inasistencia</option>
+                        <option value="Justificado">Justificada</option>
                     </select>
                 </td>
                 <td class="table-td">
@@ -472,8 +472,8 @@ $base = base_url('index.php?m=asistencia');
                         <select class="form-control doc-estado w-full p-3 text-base h-12">
                             <option value="Presente">Presente</option>
                             <option value="Tardanza">Tardanza</option>
-                            <option value="Inasistencia">Inasistencia</option>
-                            <option value="Inasistencia Justificada">Justificada</option>
+                            <option value="Inasistente">Inasistencia</option>
+                            <option value="Justificado">Justificada</option>
                         </select>
                         <input type="text" class="form-control doc-motivo w-full p-3 text-base h-12" placeholder="Motivo del cambio">
                     </div>
