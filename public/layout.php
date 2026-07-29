@@ -138,12 +138,15 @@ function render_modal_button(string $label, string $modalId, string $style = 'pr
                         $dashTab = $_GET['programa'] ?? 'Todos';
                     ?>
                         <div>
-                            <button type="button" onclick="<?php if ($module === 'dashboard') { echo "document.getElementById('submenu-dashboard').classList.toggle('hidden');"; } else { echo "window.location.href='" . e(base_url('index.php?m=dashboard')) . "';"; } ?>" class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $isDash ? 'bg-[#c8a84b] font-semibold text-[#1a3a6b]' : 'text-blue-100 hover:bg-white/10' ?>">
-                                <div class="flex items-center gap-3">
+                            <div class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $isDash ? 'bg-[#c8a84b] font-semibold text-[#1a3a6b]' : 'text-blue-100 hover:bg-white/10' ?>">
+                                <a href="<?= e(base_url('index.php?m=dashboard')) ?>" class="flex items-center gap-3 flex-1">
                                     <i data-lucide="<?= e($icon) ?>" class="h-4 w-4"></i>
                                     <span><?= e($label) ?></span>
-                                </div>
-                            </button>
+                                </a>
+                                <button type="button" onclick="document.getElementById('submenu-dashboard').classList.toggle('hidden');" aria-label="Abrir submenu <?= e($label) ?>" class="rounded-lg p-2 text-blue-100 hover:bg-white/10">
+                                    <i data-lucide="chevron-down" class="h-4 w-4 <?= $dashOpen ? 'rotate-180' : '' ?>"></i>
+                                </button>
+                            </div>
                             <div id="submenu-dashboard" class="<?= $dashOpen ? '' : 'hidden' ?> mt-1 space-y-1 pl-10 pr-3 pb-2">
                                 <?php
                                 $dashTabs = [
@@ -164,12 +167,15 @@ function render_modal_button(string $label, string $modalId, string $style = 'pr
                         $activeTab = $_GET['tab'] ?? 'periodos';
                     ?>
                         <div>
-                            <button type="button" onclick="<?php if ($module === 'configuracion') { echo "document.getElementById('submenu-config').classList.toggle('hidden');"; } else { echo "window.location.href='" . e(base_url('index.php?m=configuracion')) . "';"; } ?>" class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $cfgOpen ? 'bg-[#c8a84b] font-semibold text-[#1a3a6b]' : 'text-blue-100 hover:bg-white/10' ?>">
-                                <div class="flex items-center gap-3">
+                            <div class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $cfgOpen ? 'bg-[#c8a84b] font-semibold text-[#1a3a6b]' : 'text-blue-100 hover:bg-white/10' ?>">
+                                <a href="<?= e(base_url('index.php?m=configuracion')) ?>" class="flex items-center gap-3 flex-1">
                                     <i data-lucide="<?= e($icon) ?>" class="h-4 w-4"></i>
                                     <span><?= e($label) ?></span>
-                                </div>
-                            </button>
+                                </a>
+                                <button type="button" onclick="document.getElementById('submenu-config').classList.toggle('hidden');" aria-label="Abrir submenu <?= e($label) ?>" class="rounded-lg p-2 text-blue-100 hover:bg-white/10">
+                                    <i data-lucide="chevron-down" class="h-4 w-4 <?= $cfgOpen ? 'rotate-180' : '' ?>"></i>
+                                </button>
+                            </div>
                             <div id="submenu-config" class="<?= $cfgOpen ? '' : 'hidden' ?> mt-1 space-y-1 pl-10 pr-3 pb-2">
                                 <?php
                                 $cfgTabs = [
@@ -193,12 +199,15 @@ function render_modal_button(string $label, string $modalId, string $style = 'pr
                         $asiTab = $_GET['tab'] ?? 'estudiantes';
                     ?>
                         <div>
-                            <button type="button" onclick="<?php if ($module === 'asistencia') { echo "document.getElementById('submenu-asistencia').classList.toggle('hidden');"; } else { echo "window.location.href='" . e(base_url('index.php?m=asistencia')) . "';"; } ?>" class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $asiOpen ? 'bg-[#c8a84b] font-semibold text-[#1a3a6b]' : 'text-blue-100 hover:bg-white/10' ?>">
-                                <div class="flex items-center gap-3">
+                            <div class="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition <?= $asiOpen ? 'bg-[#c8a84b] font-semibold text-[#1a3a63]' : 'text-blue-100 hover:bg-white/10' ?>">
+                                <a href="<?= e(base_url('index.php?m=asistencia')) ?>" class="flex items-center gap-3 flex-1">
                                     <i data-lucide="<?= e($icon) ?>" class="h-4 w-4"></i>
                                     <span><?= e($label) ?></span>
-                                </div>
-                            </button>
+                                </a>
+                                <button type="button" onclick="document.getElementById('submenu-asistencia').classList.toggle('hidden');" aria-label="Abrir submenu <?= e($label) ?>" class="rounded-lg p-2 text-blue-100 hover:bg-white/10">
+                                    <i data-lucide="chevron-down" class="h-4 w-4 <?= $asiOpen ? 'rotate-180' : '' ?>"></i>
+                                </button>
+                            </div>
                             <div id="submenu-asistencia" class="<?= $asiOpen ? '' : 'hidden' ?> mt-1 space-y-1 pl-10 pr-3 pb-2">
                                 <?php
                                 $asiTabs = [

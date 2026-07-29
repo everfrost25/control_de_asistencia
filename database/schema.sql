@@ -7,6 +7,427 @@ SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 SET NAMES utf8mb4;
 
 -- ------------------------------------------------------------
+-- Table: `configuracion`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `configuracion`;
+CREATE TABLE `configuracion` (
+  `clave` varchar(50) NOT NULL,
+  `valor` text NOT NULL,
+  PRIMARY KEY (`clave`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `configuracion` (`clave`, `valor`) VALUES
+('regla_inasistencia', '30'),
+('regla_riesgo', '20');
+
+-- ------------------------------------------------------------
+-- Table: `periodos_academicos`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `periodos_academicos`;
+CREATE TABLE `periodos_academicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `estado` enum('Activo','Cerrado') DEFAULT 'Activo',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `periodos_academicos` (`id`, `nombre`, `fecha_inicio`, `fecha_fin`, `estado`) VALUES
+('1', '2026-I', '2026-03-01', '2026-07-31', 'Activo'),
+('2', '2025-II', '2025-08-01', '2025-12-31', 'Cerrado');
+
+-- ------------------------------------------------------------
+-- Table: `programas`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `programas`;
+CREATE TABLE `programas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(10) NOT NULL,
+  `nombre` varchar(180) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `programas` (`id`, `codigo`, `nombre`, `estado`) VALUES
+('1', 'DSI', 'Desarrollo de Sistemas de Información', 'Activo'),
+('2', 'CON', 'Contabilidad', 'Activo'),
+('3', 'ENF', 'Enfermería Técnica', 'Activo');
+
+-- ------------------------------------------------------------
+-- Table: `respaldos`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `respaldos`;
+CREATE TABLE `respaldos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(160) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `tamanio` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `respaldos` (`id`, `usuario`, `fecha`, `hora`, `tamanio`) VALUES
+('1', 'Admin Principal', '2026-07-21', '15:25:00', '20.5 KB');
+
+-- ------------------------------------------------------------
+-- Table: `usuarios`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(160) NOT NULL,
+  `usuario` varchar(60) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `rol` enum('admin','docente','estudiante') NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  `correo` varchar(160) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario` (`usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password_hash`, `rol`, `estado`, `correo`) VALUES
+('1', 'Camila Laura Gil Navarro', 'admin', '$2y$10$t2Quf7g8BdaAV4leI5BCmuzWF4zp2TCPDFzvjyS7wv8jHllSPdp5S', 'admin', 'Activo', 'admin@institucion.edu.pe'),
+('2', 'Lucía Camila Blanco Ramos', 'docente', '$2y$10$ACHYfkreOtxT7uBX/mN7QOeAfD4nZdSsjBnbxYQTSp3lBmfWE/x66', 'docente', 'Activo', 'docente@institucion.edu.pe'),
+('3', 'Manuel Andrés Moreno Martínez', 'estudiante', '$2y$10$vQ1e9PCvLvOkTinw7btoWupFx.5YSjOyE/9ws3AUVGQHqsuy6JXWa', 'estudiante', 'Activo', 'estudiante@institucion.edu.pe'),
+('9', 'Miguel Alejandro Muñoz Gómez', 'estudiante2', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante2@institucion.edu.pe'),
+('10', 'Daniel Fernando Gutiérrez Ramos', 'estudiante3', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante3@institucion.edu.pe'),
+('11', 'Juan Víctor Alonso Ramírez', 'estudiante4', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante4@institucion.edu.pe'),
+('12', 'Camila Laura Jiménez Martínez', 'estudiante5', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante5@institucion.edu.pe'),
+('13', 'Roberto Diego Díaz Domínguez', 'estudiante6', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante6@institucion.edu.pe'),
+('14', 'Camila Rosa García Alonso', 'estudiante7', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante7@institucion.edu.pe'),
+('15', 'Ana Claudia Sánchez García', 'estudiante8', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante8@institucion.edu.pe'),
+('16', 'Marta Patricia Ramírez Díaz', 'estudiante9', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante9@institucion.edu.pe'),
+('17', 'Andrés Fernando Navarro Álvarez', 'estudiante10', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante10@institucion.edu.pe'),
+('18', 'Alejandro Fernando Romero Ruiz', 'estudiante11', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante11@institucion.edu.pe'),
+('19', 'Sofía Paula Muñoz Ruiz', 'estudiante12', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante12@institucion.edu.pe'),
+('20', 'Daniela María Pérez Alonso', 'estudiante13', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante13@institucion.edu.pe'),
+('21', 'Paula Claudia Serrano Gil', 'estudiante14', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante14@institucion.edu.pe'),
+('22', 'Laura Claudia Ramos Pérez', 'estudiante15', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante15@institucion.edu.pe'),
+('23', 'Diego José Molina Ramos', 'estudiante16', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante16@institucion.edu.pe'),
+('24', 'Camila María Alonso Muñoz', 'estudiante17', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante17@institucion.edu.pe'),
+('25', 'Miguel Luis Molina Serrano', 'estudiante18', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante18@institucion.edu.pe'),
+('26', 'David Andrés Ramos Vázquez', 'estudiante19', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante19@institucion.edu.pe'),
+('27', 'Juan David Jiménez Gil', 'estudiante20', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante20@institucion.edu.pe'),
+('28', 'Roberto Andrés Díaz López', 'estudiante21', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante21@institucion.edu.pe'),
+('29', 'Andrés Roberto Muñoz Jiménez', 'estudiante22', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante22@institucion.edu.pe'),
+('30', 'Luis José Navarro García', 'estudiante23', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante23@institucion.edu.pe'),
+('31', 'Carlos Manuel Hernández Muñoz', 'estudiante24', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante24@institucion.edu.pe'),
+('32', 'María Camila Hernández Domínguez', 'estudiante25', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante25@institucion.edu.pe'),
+('33', 'Víctor Fernando Muñoz Fernández', 'estudiante26', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante26@institucion.edu.pe'),
+('34', 'Manuel Juan Romero Serrano', 'docente002', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente002@institucion.edu.pe'),
+('35', 'Roberto Miguel Gutiérrez Martín', 'docente003', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente003@institucion.edu.pe'),
+('36', 'Carlos Andrés Díaz Blanco', 'docente004', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente004@institucion.edu.pe'),
+('37', 'Daniel Luis Vázquez Ramos', 'docente005', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente005@institucion.edu.pe'),
+('38', 'Daniel Luis Vázquez Navarro', 'docente006', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente006@institucion.edu.pe'),
+('39', 'Sofía Camila Gil Hernández', 'docente007', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente007@institucion.edu.pe'),
+('40', 'Paula Valeria Martín Álvarez', 'docente008', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente008@institucion.edu.pe'),
+('41', 'Valeria Camila Ruiz López', 'docente009', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente009@institucion.edu.pe'),
+('42', 'Juan Miguel Gil García', 'docente010', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente010@institucion.edu.pe'),
+('43', 'José Fernando Blanco Gómez', 'docente011', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente011@institucion.edu.pe'),
+('44', 'Patricia Elena López Romero', 'docente012', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente012@institucion.edu.pe'),
+('45', 'Alejandro José Domínguez Blanco', 'docente013', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente013@institucion.edu.pe'),
+('46', 'Ana Valeria Vázquez Hernández', 'docente014', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente014@institucion.edu.pe'),
+('47', 'Elena Patricia Rodríguez Domínguez', 'docente015', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente015@institucion.edu.pe'),
+('48', 'Alejandro Carlos Hernández Jiménez', 'docente016', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente016@institucion.edu.pe'),
+('49', 'Alejandro Jorge Martínez Díaz', 'docente017', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente017@institucion.edu.pe'),
+('50', 'Sofía Marta García Álvarez', 'docente018', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente018@institucion.edu.pe'),
+('51', 'Marta Lucía Gil Serrano', 'docente019', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente019@institucion.edu.pe');
+-- ------------------------------------------------------------
+-- Table: `modulos_formativos`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `modulos_formativos`;
+CREATE TABLE `modulos_formativos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `programa_id` int(11) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `nombre` varchar(220) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  PRIMARY KEY (`id`),
+  KEY `programa_id` (`programa_id`),
+  CONSTRAINT `modulos_formativos_ibfk_1` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `modulos_formativos` (`id`, `programa_id`, `numero`, `nombre`, `estado`) VALUES
+('1', '1', '1', 'Módulo I - Desarrollo de Software y Gestión de Base de Datos', 'Activo'),
+('2', '1', '2', 'Módulo II - Desarrollo de Soluciones y Aplicaciones', 'Activo'),
+('3', '1', '3', 'Módulo III - Integración y Sistemas Empresariales', 'Activo'),
+('4', '2', '1', 'Módulo I - Asistencia Contable', 'Activo'),
+('5', '2', '2', 'Módulo II - Análisis Contable', 'Activo'),
+('6', '2', '3', 'Módulo III - Gestión Financiera', 'Activo'),
+('7', '3', '1', 'Módulo I - Promoción de la Salud', 'Activo'),
+('8', '3', '2', 'Módulo II - Asistencia Hospitalaria', 'Activo'),
+('9', '3', '3', 'Módulo III - Cuidados Especializados', 'Activo');
+
+-- ------------------------------------------------------------
+-- Table: `periodos_curriculares`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `periodos_curriculares`;
+CREATE TABLE `periodos_curriculares` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `modulo_id` int(11) NOT NULL,
+  `nombre` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `modulo_id` (`modulo_id`),
+  CONSTRAINT `periodos_curriculares_ibfk_1` FOREIGN KEY (`modulo_id`) REFERENCES `modulos_formativos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `periodos_curriculares` (`id`, `modulo_id`, `nombre`) VALUES
+('1', '1', 'I'),
+('2', '1', 'II'),
+('3', '2', 'III'),
+('4', '2', 'IV'),
+('5', '3', 'V'),
+('6', '3', 'VI'),
+('7', '4', 'I'),
+('8', '4', 'II'),
+('9', '5', 'III'),
+('10', '5', 'IV'),
+('11', '6', 'V'),
+('12', '6', 'VI'),
+('13', '7', 'I'),
+('14', '7', 'II'),
+('15', '8', 'III'),
+('16', '8', 'IV'),
+('17', '9', 'V'),
+('18', '9', 'VI');
+
+-- ------------------------------------------------------------
+-- Table: `unidades_didacticas`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `unidades_didacticas`;
+CREATE TABLE `unidades_didacticas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `periodo_curricular_id` int(11) NOT NULL,
+  `nombre` varchar(180) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  PRIMARY KEY (`id`),
+  KEY `periodo_curricular_id` (`periodo_curricular_id`),
+  CONSTRAINT `unidades_didacticas_ibfk_1` FOREIGN KEY (`periodo_curricular_id`) REFERENCES `periodos_curriculares` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `unidades_didacticas` (`id`, `periodo_curricular_id`, `nombre`, `estado`) VALUES
+('1', '1', 'Fundamentos de Programación', 'Activo'),
+('2', '1', 'Arquitectura de Entornos Web', 'Activo'),
+('3', '1', 'Interfaz Gráfica de Usuario', 'Activo'),
+('4', '1', 'Tecnologías de Información y Comunicación', 'Activo'),
+('5', '1', 'Mantenimiento de Equipos de Cómputo', 'Activo'),
+('6', '2', 'Estructura de Datos y Programación Orientada a Objetos', 'Activo'),
+('7', '2', 'Desarrollo de Entornos Web', 'Activo'),
+('8', '2', 'Prototipos Web y Móviles', 'Activo'),
+('9', '2', 'Sistemas de Información', 'Activo'),
+('10', '2', 'Reparación de Equipos de Cómputo', 'Activo'),
+('11', '3', 'Lenguaje de Programación Visual', 'Activo'),
+('12', '3', 'Programación Web', 'Activo'),
+('13', '3', 'Base de Datos', 'Activo'),
+('14', '3', 'Análisis y Diseño de Sistemas', 'Activo'),
+('15', '3', 'Diseño de Redes de Comunicación', 'Activo'),
+('16', '4', 'Programación Distribuida', 'Activo'),
+('17', '4', 'Aplicaciones Web', 'Activo'),
+('18', '4', 'Administración de Base de Datos', 'Activo'),
+('19', '4', 'Seguridad de la Información', 'Activo'),
+('20', '4', 'Configuración de Redes de Comunicación', 'Activo'),
+('21', '5', 'Diseño de Aplicaciones Móviles', 'Activo'),
+('22', '5', 'Desarrollo de Soluciones Web', 'Activo'),
+('23', '5', 'Desarrollo de Proyecto TI', 'Activo'),
+('24', '5', 'Calidad de Software', 'Activo'),
+('25', '5', 'Marketing Digital', 'Activo'),
+('26', '6', 'Desarrollo de Aplicaciones Móviles', 'Activo'),
+('27', '6', 'Integración de Sistemas Empresariales', 'Activo'),
+('28', '6', 'Desarrollo de Sistemas de Información', 'Activo'),
+('29', '6', 'Sistema de Gestión de Contenidos', 'Activo'),
+('30', '7', 'Principios Contables', 'Activo'),
+('31', '7', 'Documentación Comercial y Contable', 'Activo'),
+('32', '7', 'Legislación Tributaria', 'Activo'),
+('33', '7', 'Registro de Libros Principales', 'Activo'),
+('34', '8', 'Administración General', 'Activo'),
+('35', '8', 'Legislación Mercantil y Societaria', 'Activo'),
+('36', '8', 'Legislación Laboral', 'Activo'),
+('37', '8', 'Registro de Libros Auxiliares', 'Activo'),
+('38', '8', 'Planeamiento Estratégico', 'Activo'),
+('39', '9', 'Calculo Financiero', 'Activo'),
+('40', '9', 'Tributación y Tratamiento Contable', 'Activo'),
+('41', '9', 'Contabilidad de Sociedades Mercantiles', 'Activo'),
+('42', '9', 'Sistemas Administrativos del Sector Público', 'Activo'),
+('43', '9', 'Técnica Presupuestal', 'Activo'),
+('44', '10', 'Supervisión de Operadores Contables', 'Activo'),
+('45', '10', 'Contabilidad de Costos', 'Activo'),
+('46', '10', 'Contabilidad Gubernamental', 'Activo'),
+('47', '10', 'Aplicativos Informáticos Contables', 'Activo'),
+('48', '10', 'Planeamiento y Control Financiero', 'Activo'),
+('49', '11', 'Formulación de Estados Financieros', 'Activo'),
+('50', '11', 'Contabilidad de Entidades Financieras', 'Activo'),
+('51', '11', 'Procesos de Auditoria', 'Activo'),
+('52', '11', 'Análisis Estadístico Contable', 'Activo'),
+('53', '11', 'Gestión Financiera', 'Activo'),
+('54', '12', 'Finanzas Empresariales', 'Activo'),
+('55', '12', 'Auditoria Tributaria', 'Activo'),
+('56', '12', 'Análisis e Interpretación de los Estados Financieros', 'Activo'),
+('57', '12', 'Formulación y Evaluación de Proyectos', 'Activo'),
+('58', '13', 'Anatomía y Fisiología Humana', 'Activo'),
+('59', '13', 'Primeros Auxilios', 'Activo'),
+('60', '13', 'Epidemiología', 'Activo'),
+('61', '13', 'Educación para la Salud', 'Activo'),
+('62', '13', 'Salud en Desastres Naturales', 'Activo'),
+('63', '14', 'Salud Comunitaria', 'Activo'),
+('64', '14', 'Inmunizaciones', 'Activo'),
+('65', '14', 'Salud Pública', 'Activo'),
+('66', '14', 'Matemática Aplicada a la salud', 'Activo'),
+('67', '14', 'Salud Ocupacional', 'Activo'),
+('68', '15', 'Documentación en Salud', 'Activo'),
+('69', '15', 'Bioseguridad en Salud', 'Activo'),
+('70', '15', 'Básica Hospitalaria', 'Activo'),
+('71', '15', 'Patología', 'Activo'),
+('72', '16', 'Muestras Biológicas', 'Activo'),
+('73', '16', 'Procedimientos Invasivos y no Invasivos', 'Activo'),
+('74', '16', 'Nutrición y Dietas', 'Activo'),
+('75', '16', 'Administración de Medicamentos', 'Activo'),
+('76', '17', 'Salud Materna', 'Activo'),
+('77', '17', 'Salud Mental', 'Activo'),
+('78', '17', 'Médico Quirúrgico', 'Activo'),
+('79', '17', 'Adulto Mayor', 'Activo'),
+('80', '18', 'Salud del Niño y Adolescente', 'Activo'),
+('81', '18', 'Medicina Alternativa', 'Activo'),
+('82', '18', 'Fisioterapia y Rehabilitación', 'Activo'),
+('83', '18', 'Salud Bucal', 'Activo');
+
+-- ------------------------------------------------------------
+-- Table: `docentes`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `docentes`;
+CREATE TABLE `docentes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(30) NOT NULL,
+  `nombres` varchar(160) NOT NULL,
+  `dni` varchar(20) NOT NULL,
+  `correo` varchar(160) NOT NULL,
+  `programa_id` int(11) DEFAULT NULL,
+  `unidad_didactica_id` int(11) DEFAULT NULL,
+  `seccion` varchar(20) NOT NULL,
+  `usuario` varchar(60) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo` (`codigo`),
+  KEY `fk_docentes_programa` (`programa_id`),
+  KEY `fk_docentes_unidad` (`unidad_didactica_id`),
+  CONSTRAINT `fk_docentes_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_docentes_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `docentes` (`id`, `codigo`, `nombres`, `dni`, `correo`, `programa_id`, `unidad_didactica_id`, `seccion`, `usuario`, `estado`) VALUES
+('1', 'DOC-001', 'Lucía Camila Blanco Ramos', '24584986', 'docente@institucion.edu.pe', '1', '1', 'A', 'docente', 'Activo'),
+('7', 'DOC-002', 'Manuel Juan Romero Serrano', '35399296', 'docente002@institucion.edu.pe', '1', '1', 'A', 'docente002', 'Activo'),
+('8', 'DOC-003', 'Roberto Miguel Gutiérrez Martín', '88976726', 'docente003@institucion.edu.pe', '1', '1', 'A', 'docente003', 'Activo'),
+('9', 'DOC-004', 'Carlos Andrés Díaz Blanco', '87954318', 'docente004@institucion.edu.pe', '1', '2', 'A', 'docente004', 'Activo'),
+('10', 'DOC-005', 'Daniel Luis Vázquez Ramos', '42268841', 'docente005@institucion.edu.pe', '1', '2', 'A', 'docente005', 'Activo'),
+('11', 'DOC-006', 'Daniel Luis Vázquez Navarro', '40229680', 'docente006@institucion.edu.pe', '1', '3', 'A', 'docente006', 'Activo'),
+('12', 'DOC-007', 'Sofía Camila Gil Hernández', '75952267', 'docente007@institucion.edu.pe', '1', '3', 'A', 'docente007', 'Activo'),
+('13', 'DOC-008', 'Paula Valeria Martín Álvarez', '38828230', 'docente008@institucion.edu.pe', '2', '30', 'A', 'docente008', 'Activo'),
+('14', 'DOC-009', 'Valeria Camila Ruiz López', '16565604', 'docente009@institucion.edu.pe', '2', '30', 'A', 'docente009', 'Activo'),
+('15', 'DOC-010', 'Juan Miguel Gil García', '20825641', 'docente010@institucion.edu.pe', '2', '31', 'A', 'docente010', 'Activo'),
+('16', 'DOC-011', 'José Fernando Blanco Gómez', '94127643', 'docente011@institucion.edu.pe', '2', '31', 'A', 'docente011', 'Activo'),
+('17', 'DOC-012', 'Patricia Elena López Romero', '37563597', 'docente012@institucion.edu.pe', '2', '32', 'A', 'docente012', 'Activo'),
+('18', 'DOC-013', 'Alejandro José Domínguez Blanco', '52685177', 'docente013@institucion.edu.pe', '2', '32', 'A', 'docente013', 'Activo'),
+('19', 'DOC-014', 'Ana Valeria Vázquez Hernández', '58884550', 'docente014@institucion.edu.pe', '3', '58', 'A', 'docente014', 'Activo'),
+('20', 'DOC-015', 'Elena Patricia Rodríguez Domínguez', '59916864', 'docente015@institucion.edu.pe', '3', '58', 'A', 'docente015', 'Activo'),
+('21', 'DOC-016', 'Alejandro Carlos Hernández Jiménez', '76336080', 'docente016@institucion.edu.pe', '3', '59', 'A', 'docente016', 'Activo'),
+('22', 'DOC-017', 'Alejandro Jorge Martínez Díaz', '22464949', 'docente017@institucion.edu.pe', '3', '59', 'A', 'docente017', 'Activo'),
+('23', 'DOC-018', 'Sofía Marta García Álvarez', '70936390', 'docente018@institucion.edu.pe', '3', '60', 'A', 'docente018', 'Activo'),
+('24', 'DOC-019', 'Marta Lucía Gil Serrano', '16053054', 'docente019@institucion.edu.pe', '3', '60', 'A', 'docente019', 'Activo');
+
+-- ------------------------------------------------------------
+-- Table: `estudiantes`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `estudiantes`;
+CREATE TABLE `estudiantes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(30) NOT NULL,
+  `dni` varchar(20) NOT NULL,
+  `nombres` varchar(160) NOT NULL,
+  `programa_id` int(11) DEFAULT NULL,
+  `periodo_curricular_id` int(11) DEFAULT NULL,
+  `unidad_didactica_id` int(11) DEFAULT NULL,
+  `seccion` varchar(10) NOT NULL,
+  `total_sesiones` int(11) NOT NULL DEFAULT 0,
+  `inasistencias` int(11) NOT NULL DEFAULT 0,
+  `estado` enum('Activo','En riesgo','Inhabilitado') NOT NULL DEFAULT 'Activo',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo` (`codigo`),
+  KEY `fk_estudiantes_programa` (`programa_id`),
+  KEY `fk_estudiantes_periodo` (`periodo_curricular_id`),
+  KEY `fk_estudiantes_unidad` (`unidad_didactica_id`),
+  KEY `idx_estudiantes_programa` (`programa_id`,`periodo_curricular_id`),
+  CONSTRAINT `fk_estudiantes_periodo` FOREIGN KEY (`periodo_curricular_id`) REFERENCES `periodos_curriculares` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_estudiantes_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_estudiantes_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `estudiantes` (`id`, `codigo`, `dni`, `nombres`, `programa_id`, `periodo_curricular_id`, `unidad_didactica_id`, `seccion`, `total_sesiones`, `inasistencias`, `estado`) VALUES
+('1', 'EST-001', '77564676', 'Manuel Andrés Moreno Martínez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('2', 'EST-002', '71540483', 'Miguel Alejandro Muñoz Gómez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('3', 'EST-003', '29710119', 'Daniel Fernando Gutiérrez Ramos', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('4', 'EST-004', '42065644', 'Juan Víctor Alonso Ramírez', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('5', 'EST-005', '51394257', 'Camila Laura Jiménez Martínez', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('6', 'EST-006', '94235650', 'Roberto Diego Díaz Domínguez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('7', 'EST-007', '61449265', 'Camila Rosa García Alonso', '1', '1', '1', 'A', '10', '0', 'Activo'),
+('8', 'EST-008', '86161043', 'Ana Claudia Sánchez García', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('9', 'EST-009', '86390228', 'Marta Patricia Ramírez Díaz', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('10', 'EST-010', '60128704', 'Andrés Fernando Navarro Álvarez', '1', '1', '1', 'A', '10', '0', 'Activo'),
+('11', 'EST-011', '20508535', 'Alejandro Fernando Romero Ruiz', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('12', 'EST-012', '25707902', 'Sofía Paula Muñoz Ruiz', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('13', 'EST-013', '39675464', 'Daniela María Pérez Alonso', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('14', 'EST-014', '86294876', 'Paula Claudia Serrano Gil', '1', '1', '1', 'A', '10', '0', 'Activo'),
+('15', 'EST-015', '48994548', 'Laura Claudia Ramos Pérez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('16', 'EST-016', '79443425', 'Diego José Molina Ramos', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('17', 'EST-017', '70609539', 'Camila María Alonso Muñoz', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('18', 'EST-018', '67104637', 'Miguel Luis Molina Serrano', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('19', 'EST-019', '76184221', 'David Andrés Ramos Vázquez', '1', '1', '1', 'A', '10', '0', 'Activo'),
+('20', 'EST-020', '99612128', 'Juan David Jiménez Gil', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('21', 'EST-021', '50736421', 'Roberto Andrés Díaz López', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
+('22', 'EST-022', '66145368', 'Andrés Roberto Muñoz Jiménez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('23', 'EST-023', '91163053', 'Luis José Navarro García', '1', '1', '1', 'A', '10', '0', 'Activo'),
+('24', 'EST-024', '32635459', 'Carlos Manuel Hernández Muñoz', '1', '1', '1', 'A', '10', '3', 'Inhabilitado'),
+('25', 'EST-025', '96320624', 'María Camila Hernández Domínguez', '1', '1', '1', 'A', '10', '1', 'Activo'),
+('26', 'EST-026', '28922781', 'Víctor Fernando Muñoz Fernández', '1', '1', '1', 'A', '10', '2', 'En riesgo');
+
+-- ------------------------------------------------------------
+-- Table: `sesiones`
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `sesiones`;
+CREATE TABLE `sesiones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `programa_id` int(11) DEFAULT NULL,
+  `unidad_didactica_id` int(11) DEFAULT NULL,
+  `seccion` varchar(20) NOT NULL,
+  `docente_id` int(11) DEFAULT NULL,
+  `periodo` varchar(20) NOT NULL DEFAULT '2026-I',
+  `estado` enum('Pendiente','Registrada','Cerrada') NOT NULL DEFAULT 'Pendiente',
+  PRIMARY KEY (`id`),
+  KEY `fk_sesiones_docente` (`docente_id`),
+  KEY `fk_sesiones_programa` (`programa_id`),
+  KEY `fk_sesiones_unidad` (`unidad_didactica_id`),
+  KEY `idx_sesiones_fecha_hora` (`fecha`,`hora`),
+  CONSTRAINT `fk_sesiones_docente` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_sesiones_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_sesiones_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `sesiones` (`id`, `fecha`, `hora`, `programa_id`, `unidad_didactica_id`, `seccion`, `docente_id`, `periodo`, `estado`) VALUES
+('1', '2026-07-16', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('2', '2026-07-17', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('3', '2026-07-18', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('4', '2026-07-19', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('5', '2026-07-20', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('6', '2026-07-21', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('7', '2026-07-22', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('8', '2026-07-23', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('9', '2026-07-24', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
+('10', '2026-07-25', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada');
+
+-- ------------------------------------------------------------
 -- Table: `asistencia_docentes`
 -- ------------------------------------------------------------
 DROP TABLE IF EXISTS `asistencia_docentes`;
@@ -361,119 +782,6 @@ CREATE TABLE `auditoria_asistencias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- Table: `configuracion`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `configuracion`;
-CREATE TABLE `configuracion` (
-  `clave` varchar(50) NOT NULL,
-  `valor` text NOT NULL,
-  PRIMARY KEY (`clave`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `configuracion` (`clave`, `valor`) VALUES
-('regla_inasistencia', '30'),
-('regla_riesgo', '20');
-
--- ------------------------------------------------------------
--- Table: `docentes`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `docentes`;
-CREATE TABLE `docentes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) NOT NULL,
-  `nombres` varchar(160) NOT NULL,
-  `dni` varchar(20) NOT NULL,
-  `correo` varchar(160) NOT NULL,
-  `programa_id` int(11) DEFAULT NULL,
-  `unidad_didactica_id` int(11) DEFAULT NULL,
-  `seccion` varchar(20) NOT NULL,
-  `usuario` varchar(60) NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `codigo` (`codigo`),
-  KEY `fk_docentes_programa` (`programa_id`),
-  KEY `fk_docentes_unidad` (`unidad_didactica_id`),
-  CONSTRAINT `fk_docentes_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `fk_docentes_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `docentes` (`id`, `codigo`, `nombres`, `dni`, `correo`, `programa_id`, `unidad_didactica_id`, `seccion`, `usuario`, `estado`) VALUES
-('1', 'DOC-001', 'Lucía Camila Blanco Ramos', '24584986', 'docente@institucion.edu.pe', '1', '1', 'A', 'docente', 'Activo'),
-('7', 'DOC-002', 'Manuel Juan Romero Serrano', '35399296', 'docente002@institucion.edu.pe', '1', '1', 'A', 'docente002', 'Activo'),
-('8', 'DOC-003', 'Roberto Miguel Gutiérrez Martín', '88976726', 'docente003@institucion.edu.pe', '1', '1', 'A', 'docente003', 'Activo'),
-('9', 'DOC-004', 'Carlos Andrés Díaz Blanco', '87954318', 'docente004@institucion.edu.pe', '1', '2', 'A', 'docente004', 'Activo'),
-('10', 'DOC-005', 'Daniel Luis Vázquez Ramos', '42268841', 'docente005@institucion.edu.pe', '1', '2', 'A', 'docente005', 'Activo'),
-('11', 'DOC-006', 'Daniel Luis Vázquez Navarro', '40229680', 'docente006@institucion.edu.pe', '1', '3', 'A', 'docente006', 'Activo'),
-('12', 'DOC-007', 'Sofía Camila Gil Hernández', '75952267', 'docente007@institucion.edu.pe', '1', '3', 'A', 'docente007', 'Activo'),
-('13', 'DOC-008', 'Paula Valeria Martín Álvarez', '38828230', 'docente008@institucion.edu.pe', '2', '30', 'A', 'docente008', 'Activo'),
-('14', 'DOC-009', 'Valeria Camila Ruiz López', '16565604', 'docente009@institucion.edu.pe', '2', '30', 'A', 'docente009', 'Activo'),
-('15', 'DOC-010', 'Juan Miguel Gil García', '20825641', 'docente010@institucion.edu.pe', '2', '31', 'A', 'docente010', 'Activo'),
-('16', 'DOC-011', 'José Fernando Blanco Gómez', '94127643', 'docente011@institucion.edu.pe', '2', '31', 'A', 'docente011', 'Activo'),
-('17', 'DOC-012', 'Patricia Elena López Romero', '37563597', 'docente012@institucion.edu.pe', '2', '32', 'A', 'docente012', 'Activo'),
-('18', 'DOC-013', 'Alejandro José Domínguez Blanco', '52685177', 'docente013@institucion.edu.pe', '2', '32', 'A', 'docente013', 'Activo'),
-('19', 'DOC-014', 'Ana Valeria Vázquez Hernández', '58884550', 'docente014@institucion.edu.pe', '3', '58', 'A', 'docente014', 'Activo'),
-('20', 'DOC-015', 'Elena Patricia Rodríguez Domínguez', '59916864', 'docente015@institucion.edu.pe', '3', '58', 'A', 'docente015', 'Activo'),
-('21', 'DOC-016', 'Alejandro Carlos Hernández Jiménez', '76336080', 'docente016@institucion.edu.pe', '3', '59', 'A', 'docente016', 'Activo'),
-('22', 'DOC-017', 'Alejandro Jorge Martínez Díaz', '22464949', 'docente017@institucion.edu.pe', '3', '59', 'A', 'docente017', 'Activo'),
-('23', 'DOC-018', 'Sofía Marta García Álvarez', '70936390', 'docente018@institucion.edu.pe', '3', '60', 'A', 'docente018', 'Activo'),
-('24', 'DOC-019', 'Marta Lucía Gil Serrano', '16053054', 'docente019@institucion.edu.pe', '3', '60', 'A', 'docente019', 'Activo');
-
--- ------------------------------------------------------------
--- Table: `estudiantes`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `estudiantes`;
-CREATE TABLE `estudiantes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) NOT NULL,
-  `dni` varchar(20) NOT NULL,
-  `nombres` varchar(160) NOT NULL,
-  `programa_id` int(11) DEFAULT NULL,
-  `periodo_curricular_id` int(11) DEFAULT NULL,
-  `unidad_didactica_id` int(11) DEFAULT NULL,
-  `seccion` varchar(10) NOT NULL,
-  `total_sesiones` int(11) NOT NULL DEFAULT 0,
-  `inasistencias` int(11) NOT NULL DEFAULT 0,
-  `estado` enum('Activo','En riesgo','Inhabilitado') NOT NULL DEFAULT 'Activo',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `codigo` (`codigo`),
-  KEY `fk_estudiantes_programa` (`programa_id`),
-  KEY `fk_estudiantes_periodo` (`periodo_curricular_id`),
-  KEY `fk_estudiantes_unidad` (`unidad_didactica_id`),
-  KEY `idx_estudiantes_programa` (`programa_id`,`periodo_curricular_id`),
-  CONSTRAINT `fk_estudiantes_periodo` FOREIGN KEY (`periodo_curricular_id`) REFERENCES `periodos_curriculares` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `fk_estudiantes_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `fk_estudiantes_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `estudiantes` (`id`, `codigo`, `dni`, `nombres`, `programa_id`, `periodo_curricular_id`, `unidad_didactica_id`, `seccion`, `total_sesiones`, `inasistencias`, `estado`) VALUES
-('1', 'EST-001', '77564676', 'Manuel Andrés Moreno Martínez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('2', 'EST-002', '71540483', 'Miguel Alejandro Muñoz Gómez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('3', 'EST-003', '29710119', 'Daniel Fernando Gutiérrez Ramos', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('4', 'EST-004', '42065644', 'Juan Víctor Alonso Ramírez', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('5', 'EST-005', '51394257', 'Camila Laura Jiménez Martínez', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('6', 'EST-006', '94235650', 'Roberto Diego Díaz Domínguez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('7', 'EST-007', '61449265', 'Camila Rosa García Alonso', '1', '1', '1', 'A', '10', '0', 'Activo'),
-('8', 'EST-008', '86161043', 'Ana Claudia Sánchez García', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('9', 'EST-009', '86390228', 'Marta Patricia Ramírez Díaz', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('10', 'EST-010', '60128704', 'Andrés Fernando Navarro Álvarez', '1', '1', '1', 'A', '10', '0', 'Activo'),
-('11', 'EST-011', '20508535', 'Alejandro Fernando Romero Ruiz', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('12', 'EST-012', '25707902', 'Sofía Paula Muñoz Ruiz', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('13', 'EST-013', '39675464', 'Daniela María Pérez Alonso', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('14', 'EST-014', '86294876', 'Paula Claudia Serrano Gil', '1', '1', '1', 'A', '10', '0', 'Activo'),
-('15', 'EST-015', '48994548', 'Laura Claudia Ramos Pérez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('16', 'EST-016', '79443425', 'Diego José Molina Ramos', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('17', 'EST-017', '70609539', 'Camila María Alonso Muñoz', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('18', 'EST-018', '67104637', 'Miguel Luis Molina Serrano', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('19', 'EST-019', '76184221', 'David Andrés Ramos Vázquez', '1', '1', '1', 'A', '10', '0', 'Activo'),
-('20', 'EST-020', '99612128', 'Juan David Jiménez Gil', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('21', 'EST-021', '50736421', 'Roberto Andrés Díaz López', '1', '1', '1', 'A', '10', '2', 'En riesgo'),
-('22', 'EST-022', '66145368', 'Andrés Roberto Muñoz Jiménez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('23', 'EST-023', '91163053', 'Luis José Navarro García', '1', '1', '1', 'A', '10', '0', 'Activo'),
-('24', 'EST-024', '32635459', 'Carlos Manuel Hernández Muñoz', '1', '1', '1', 'A', '10', '3', 'Inhabilitado'),
-('25', 'EST-025', '96320624', 'María Camila Hernández Domínguez', '1', '1', '1', 'A', '10', '1', 'Activo'),
-('26', 'EST-026', '28922781', 'Víctor Fernando Muñoz Fernández', '1', '1', '1', 'A', '10', '2', 'En riesgo');
-
--- ------------------------------------------------------------
 -- Table: `horarios`
 -- ------------------------------------------------------------
 DROP TABLE IF EXISTS `horarios`;
@@ -495,313 +803,5 @@ CREATE TABLE `horarios` (
   CONSTRAINT `horarios_ibfk_3` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Table: `modulos_formativos`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `modulos_formativos`;
-CREATE TABLE `modulos_formativos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `programa_id` int(11) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `nombre` varchar(220) NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
-  PRIMARY KEY (`id`),
-  KEY `programa_id` (`programa_id`),
-  CONSTRAINT `modulos_formativos_ibfk_1` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `modulos_formativos` (`id`, `programa_id`, `numero`, `nombre`, `estado`) VALUES
-('1', '1', '1', 'Módulo I - Desarrollo de Software y Gestión de Base de Datos', 'Activo'),
-('2', '1', '2', 'Módulo II - Desarrollo de Soluciones y Aplicaciones', 'Activo'),
-('3', '1', '3', 'Módulo III - Integración y Sistemas Empresariales', 'Activo'),
-('4', '2', '1', 'Módulo I - Asistencia Contable', 'Activo'),
-('5', '2', '2', 'Módulo II - Análisis Contable', 'Activo'),
-('6', '2', '3', 'Módulo III - Gestión Financiera', 'Activo'),
-('7', '3', '1', 'Módulo I - Promoción de la Salud', 'Activo'),
-('8', '3', '2', 'Módulo II - Asistencia Hospitalaria', 'Activo'),
-('9', '3', '3', 'Módulo III - Cuidados Especializados', 'Activo');
-
--- ------------------------------------------------------------
--- Table: `periodos_academicos`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `periodos_academicos`;
-CREATE TABLE `periodos_academicos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `estado` enum('Activo','Cerrado') DEFAULT 'Activo',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `periodos_academicos` (`id`, `nombre`, `fecha_inicio`, `fecha_fin`, `estado`) VALUES
-('1', '2026-I', '2026-03-01', '2026-07-31', 'Activo'),
-('2', '2025-II', '2025-08-01', '2025-12-31', 'Cerrado');
-
--- ------------------------------------------------------------
--- Table: `periodos_curriculares`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `periodos_curriculares`;
-CREATE TABLE `periodos_curriculares` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `modulo_id` int(11) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `modulo_id` (`modulo_id`),
-  CONSTRAINT `periodos_curriculares_ibfk_1` FOREIGN KEY (`modulo_id`) REFERENCES `modulos_formativos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `periodos_curriculares` (`id`, `modulo_id`, `nombre`) VALUES
-('1', '1', 'I'),
-('2', '1', 'II'),
-('3', '2', 'III'),
-('4', '2', 'IV'),
-('5', '3', 'V'),
-('6', '3', 'VI'),
-('7', '4', 'I'),
-('8', '4', 'II'),
-('9', '5', 'III'),
-('10', '5', 'IV'),
-('11', '6', 'V'),
-('12', '6', 'VI'),
-('13', '7', 'I'),
-('14', '7', 'II'),
-('15', '8', 'III'),
-('16', '8', 'IV'),
-('17', '9', 'V'),
-('18', '9', 'VI');
-
--- ------------------------------------------------------------
--- Table: `programas`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `programas`;
-CREATE TABLE `programas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(10) NOT NULL,
-  `nombre` varchar(180) NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `programas` (`id`, `codigo`, `nombre`, `estado`) VALUES
-('1', 'DSI', 'Desarrollo de Sistemas de Información', 'Activo'),
-('2', 'CON', 'Contabilidad', 'Activo'),
-('3', 'ENF', 'Enfermería Técnica', 'Activo');
-
--- ------------------------------------------------------------
--- Table: `respaldos`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `respaldos`;
-CREATE TABLE `respaldos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(160) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  `tamanio` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `respaldos` (`id`, `usuario`, `fecha`, `hora`, `tamanio`) VALUES
-('1', 'Admin Principal', '2026-07-21', '15:25:00', '20.5 KB');
-
--- ------------------------------------------------------------
--- Table: `sesiones`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `sesiones`;
-CREATE TABLE `sesiones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  `programa_id` int(11) DEFAULT NULL,
-  `unidad_didactica_id` int(11) DEFAULT NULL,
-  `seccion` varchar(20) NOT NULL,
-  `docente_id` int(11) DEFAULT NULL,
-  `periodo` varchar(20) NOT NULL DEFAULT '2026-I',
-  `estado` enum('Pendiente','Registrada','Cerrada') NOT NULL DEFAULT 'Pendiente',
-  PRIMARY KEY (`id`),
-  KEY `fk_sesiones_docente` (`docente_id`),
-  KEY `fk_sesiones_programa` (`programa_id`),
-  KEY `fk_sesiones_unidad` (`unidad_didactica_id`),
-  KEY `idx_sesiones_fecha_hora` (`fecha`,`hora`),
-  CONSTRAINT `fk_sesiones_docente` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_sesiones_programa` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `fk_sesiones_unidad` FOREIGN KEY (`unidad_didactica_id`) REFERENCES `unidades_didacticas` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `sesiones` (`id`, `fecha`, `hora`, `programa_id`, `unidad_didactica_id`, `seccion`, `docente_id`, `periodo`, `estado`) VALUES
-('1', '2026-07-16', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('2', '2026-07-17', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('3', '2026-07-18', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('4', '2026-07-19', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('5', '2026-07-20', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('6', '2026-07-21', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('7', '2026-07-22', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('8', '2026-07-23', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('9', '2026-07-24', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada'),
-('10', '2026-07-25', '08:00:00', '1', '1', 'A', '1', '2026-I', 'Cerrada');
-
--- ------------------------------------------------------------
--- Table: `unidades_didacticas`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `unidades_didacticas`;
-CREATE TABLE `unidades_didacticas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `periodo_curricular_id` int(11) NOT NULL,
-  `nombre` varchar(180) NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
-  PRIMARY KEY (`id`),
-  KEY `periodo_curricular_id` (`periodo_curricular_id`),
-  CONSTRAINT `unidades_didacticas_ibfk_1` FOREIGN KEY (`periodo_curricular_id`) REFERENCES `periodos_curriculares` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `unidades_didacticas` (`id`, `periodo_curricular_id`, `nombre`, `estado`) VALUES
-('1', '1', 'Fundamentos de Programación', 'Activo'),
-('2', '1', 'Arquitectura de Entornos Web', 'Activo'),
-('3', '1', 'Interfaz Gráfica de Usuario', 'Activo'),
-('4', '1', 'Tecnologías de Información y Comunicación', 'Activo'),
-('5', '1', 'Mantenimiento de Equipos de Cómputo', 'Activo'),
-('6', '2', 'Estructura de Datos y Programación Orientada a Objetos', 'Activo'),
-('7', '2', 'Desarrollo de Entornos Web', 'Activo'),
-('8', '2', 'Prototipos Web y Móviles', 'Activo'),
-('9', '2', 'Sistemas de Información', 'Activo'),
-('10', '2', 'Reparación de Equipos de Cómputo', 'Activo'),
-('11', '3', 'Lenguaje de Programación Visual', 'Activo'),
-('12', '3', 'Programación Web', 'Activo'),
-('13', '3', 'Base de Datos', 'Activo'),
-('14', '3', 'Análisis y Diseño de Sistemas', 'Activo'),
-('15', '3', 'Diseño de Redes de Comunicación', 'Activo'),
-('16', '4', 'Programación Distribuida', 'Activo'),
-('17', '4', 'Aplicaciones Web', 'Activo'),
-('18', '4', 'Administración de Base de Datos', 'Activo'),
-('19', '4', 'Seguridad de la Información', 'Activo'),
-('20', '4', 'Configuración de Redes de Comunicación', 'Activo'),
-('21', '5', 'Diseño de Aplicaciones Móviles', 'Activo'),
-('22', '5', 'Desarrollo de Soluciones Web', 'Activo'),
-('23', '5', 'Desarrollo de Proyecto TI', 'Activo'),
-('24', '5', 'Calidad de Software', 'Activo'),
-('25', '5', 'Marketing Digital', 'Activo'),
-('26', '6', 'Desarrollo de Aplicaciones Móviles', 'Activo'),
-('27', '6', 'Integración de Sistemas Empresariales', 'Activo'),
-('28', '6', 'Desarrollo de Sistemas de Información', 'Activo'),
-('29', '6', 'Sistema de Gestión de Contenidos', 'Activo'),
-('30', '7', 'Principios Contables', 'Activo'),
-('31', '7', 'Documentación Comercial y Contable', 'Activo'),
-('32', '7', 'Legislación Tributaria', 'Activo'),
-('33', '7', 'Registro de Libros Principales', 'Activo'),
-('34', '8', 'Administración General', 'Activo'),
-('35', '8', 'Legislación Mercantil y Societaria', 'Activo'),
-('36', '8', 'Legislación Laboral', 'Activo'),
-('37', '8', 'Registro de Libros Auxiliares', 'Activo'),
-('38', '8', 'Planeamiento Estratégico', 'Activo'),
-('39', '9', 'Calculo Financiero', 'Activo'),
-('40', '9', 'Tributación y Tratamiento Contable', 'Activo'),
-('41', '9', 'Contabilidad de Sociedades Mercantiles', 'Activo'),
-('42', '9', 'Sistemas Administrativos del Sector Público', 'Activo'),
-('43', '9', 'Técnica Presupuestal', 'Activo'),
-('44', '10', 'Supervisión de Operadores Contables', 'Activo'),
-('45', '10', 'Contabilidad de Costos', 'Activo'),
-('46', '10', 'Contabilidad Gubernamental', 'Activo'),
-('47', '10', 'Aplicativos Informáticos Contables', 'Activo'),
-('48', '10', 'Planeamiento y Control Financiero', 'Activo'),
-('49', '11', 'Formulación de Estados Financieros', 'Activo'),
-('50', '11', 'Contabilidad de Entidades Financieras', 'Activo'),
-('51', '11', 'Procesos de Auditoria', 'Activo'),
-('52', '11', 'Análisis Estadístico Contable', 'Activo'),
-('53', '11', 'Gestión Financiera', 'Activo'),
-('54', '12', 'Finanzas Empresariales', 'Activo'),
-('55', '12', 'Auditoria Tributaria', 'Activo'),
-('56', '12', 'Análisis e Interpretación de los Estados Financieros', 'Activo'),
-('57', '12', 'Formulación y Evaluación de Proyectos', 'Activo'),
-('58', '13', 'Anatomía y Fisiología Humana', 'Activo'),
-('59', '13', 'Primeros Auxilios', 'Activo'),
-('60', '13', 'Epidemiología', 'Activo'),
-('61', '13', 'Educación para la Salud', 'Activo'),
-('62', '13', 'Salud en Desastres Naturales', 'Activo'),
-('63', '14', 'Salud Comunitaria', 'Activo'),
-('64', '14', 'Inmunizaciones', 'Activo'),
-('65', '14', 'Salud Pública', 'Activo'),
-('66', '14', 'Matemática Aplicada a la salud', 'Activo'),
-('67', '14', 'Salud Ocupacional', 'Activo'),
-('68', '15', 'Documentación en Salud', 'Activo'),
-('69', '15', 'Bioseguridad en Salud', 'Activo'),
-('70', '15', 'Básica Hospitalaria', 'Activo'),
-('71', '15', 'Patología', 'Activo'),
-('72', '16', 'Muestras Biológicas', 'Activo'),
-('73', '16', 'Procedimientos Invasivos y no Invasivos', 'Activo'),
-('74', '16', 'Nutrición y Dietas', 'Activo'),
-('75', '16', 'Administración de Medicamentos', 'Activo'),
-('76', '17', 'Salud Materna', 'Activo'),
-('77', '17', 'Salud Mental', 'Activo'),
-('78', '17', 'Médico Quirúrgico', 'Activo'),
-('79', '17', 'Adulto Mayor', 'Activo'),
-('80', '18', 'Salud del Niño y Adolescente', 'Activo'),
-('81', '18', 'Medicina Alternativa', 'Activo'),
-('82', '18', 'Fisioterapia y Rehabilitación', 'Activo'),
-('83', '18', 'Salud Bucal', 'Activo');
-
--- ------------------------------------------------------------
--- Table: `usuarios`
--- ------------------------------------------------------------
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(160) NOT NULL,
-  `usuario` varchar(60) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `rol` enum('admin','docente','estudiante') NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
-  `correo` varchar(160) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password_hash`, `rol`, `estado`, `correo`) VALUES
-('1', 'Camila Laura Gil Navarro', 'admin', '$2y$10$t2Quf7g8BdaAV4leI5BCmuzWF4zp2TCPDFzvjyS7wv8jHllSPdp5S', 'admin', 'Activo', 'admin@institucion.edu.pe'),
-('2', 'Lucía Camila Blanco Ramos', 'docente', '$2y$10$ACHYfkreOtxT7uBX/mN7QOeAfD4nZdSsjBnbxYQTSp3lBmfWE/x66', 'docente', 'Activo', 'docente@institucion.edu.pe'),
-('3', 'Manuel Andrés Moreno Martínez', 'estudiante', '$2y$10$vQ1e9PCvLvOkTinw7btoWupFx.5YSjOyE/9ws3AUVGQHqsuy6JXWa', 'estudiante', 'Activo', 'estudiante@institucion.edu.pe'),
-('9', 'Miguel Alejandro Muñoz Gómez', 'estudiante2', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante2@institucion.edu.pe'),
-('10', 'Daniel Fernando Gutiérrez Ramos', 'estudiante3', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante3@institucion.edu.pe'),
-('11', 'Juan Víctor Alonso Ramírez', 'estudiante4', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante4@institucion.edu.pe'),
-('12', 'Camila Laura Jiménez Martínez', 'estudiante5', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante5@institucion.edu.pe'),
-('13', 'Roberto Diego Díaz Domínguez', 'estudiante6', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante6@institucion.edu.pe'),
-('14', 'Camila Rosa García Alonso', 'estudiante7', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante7@institucion.edu.pe'),
-('15', 'Ana Claudia Sánchez García', 'estudiante8', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante8@institucion.edu.pe'),
-('16', 'Marta Patricia Ramírez Díaz', 'estudiante9', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante9@institucion.edu.pe'),
-('17', 'Andrés Fernando Navarro Álvarez', 'estudiante10', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante10@institucion.edu.pe'),
-('18', 'Alejandro Fernando Romero Ruiz', 'estudiante11', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante11@institucion.edu.pe'),
-('19', 'Sofía Paula Muñoz Ruiz', 'estudiante12', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante12@institucion.edu.pe'),
-('20', 'Daniela María Pérez Alonso', 'estudiante13', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante13@institucion.edu.pe'),
-('21', 'Paula Claudia Serrano Gil', 'estudiante14', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante14@institucion.edu.pe'),
-('22', 'Laura Claudia Ramos Pérez', 'estudiante15', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante15@institucion.edu.pe'),
-('23', 'Diego José Molina Ramos', 'estudiante16', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante16@institucion.edu.pe'),
-('24', 'Camila María Alonso Muñoz', 'estudiante17', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante17@institucion.edu.pe'),
-('25', 'Miguel Luis Molina Serrano', 'estudiante18', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante18@institucion.edu.pe'),
-('26', 'David Andrés Ramos Vázquez', 'estudiante19', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante19@institucion.edu.pe'),
-('27', 'Juan David Jiménez Gil', 'estudiante20', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante20@institucion.edu.pe'),
-('28', 'Roberto Andrés Díaz López', 'estudiante21', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante21@institucion.edu.pe'),
-('29', 'Andrés Roberto Muñoz Jiménez', 'estudiante22', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante22@institucion.edu.pe'),
-('30', 'Luis José Navarro García', 'estudiante23', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante23@institucion.edu.pe'),
-('31', 'Carlos Manuel Hernández Muñoz', 'estudiante24', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante24@institucion.edu.pe'),
-('32', 'María Camila Hernández Domínguez', 'estudiante25', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante25@institucion.edu.pe'),
-('33', 'Víctor Fernando Muñoz Fernández', 'estudiante26', '$2y$10$MxiqjRRc30vqkO2V.nsFX.UiwLITXn5vdVxpzt1QM7PT18ql/geOi', 'estudiante', 'Activo', 'estudiante26@institucion.edu.pe'),
-('34', 'Manuel Juan Romero Serrano', 'docente002', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente002@institucion.edu.pe'),
-('35', 'Roberto Miguel Gutiérrez Martín', 'docente003', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente003@institucion.edu.pe'),
-('36', 'Carlos Andrés Díaz Blanco', 'docente004', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente004@institucion.edu.pe'),
-('37', 'Daniel Luis Vázquez Ramos', 'docente005', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente005@institucion.edu.pe'),
-('38', 'Daniel Luis Vázquez Navarro', 'docente006', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente006@institucion.edu.pe'),
-('39', 'Sofía Camila Gil Hernández', 'docente007', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente007@institucion.edu.pe'),
-('40', 'Paula Valeria Martín Álvarez', 'docente008', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente008@institucion.edu.pe'),
-('41', 'Valeria Camila Ruiz López', 'docente009', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente009@institucion.edu.pe'),
-('42', 'Juan Miguel Gil García', 'docente010', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente010@institucion.edu.pe'),
-('43', 'José Fernando Blanco Gómez', 'docente011', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente011@institucion.edu.pe'),
-('44', 'Patricia Elena López Romero', 'docente012', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente012@institucion.edu.pe'),
-('45', 'Alejandro José Domínguez Blanco', 'docente013', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente013@institucion.edu.pe'),
-('46', 'Ana Valeria Vázquez Hernández', 'docente014', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente014@institucion.edu.pe'),
-('47', 'Elena Patricia Rodríguez Domínguez', 'docente015', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente015@institucion.edu.pe'),
-('48', 'Alejandro Carlos Hernández Jiménez', 'docente016', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente016@institucion.edu.pe'),
-('49', 'Alejandro Jorge Martínez Díaz', 'docente017', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente017@institucion.edu.pe'),
-('50', 'Sofía Marta García Álvarez', 'docente018', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente018@institucion.edu.pe'),
-('51', 'Marta Lucía Gil Serrano', 'docente019', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente019@institucion.edu.pe');
 
 SET FOREIGN_KEY_CHECKS = 1;
