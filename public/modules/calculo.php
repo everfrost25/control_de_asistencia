@@ -4,6 +4,9 @@ $programas   = all_programas();
 $unidades    = all_unidades();
 $periodos    = all_periodos();
 
+$cfgInasistencia = (int) app_config('regla_inasistencia', 30);
+$cfgRiesgo = (int) app_config('regla_riesgo', 20);
+
 $totalSesiones = max(array_column($estudiantes, 'sesiones') ?: [0]);
 $totalInasistencias = array_sum(array_column($estudiantes, 'inasistencias'));
 $totalPresentes = array_sum(array_map(fn($e) => max(0, (int)$e['sesiones'] - (int)$e['inasistencias']), $estudiantes));

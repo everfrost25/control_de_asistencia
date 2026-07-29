@@ -19,7 +19,9 @@ function db(): PDO
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
     } catch (PDOException $e) {
-        die('Error de Conexión a la Base de Datos: Verifique que las credenciales en app/config.php sean correctas. Detalle: ' . $e->getMessage());
+        error_log('Error de base de datos: ' . $e->getMessage());
+        http_response_code(500);
+        die('La base de datos no está disponible. Verifique app/config.php e importe database/schema.sql antes de usar el sistema.');
     }
 
     return $pdo;
