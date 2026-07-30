@@ -36,6 +36,7 @@ try {
             $nombre = trim($data['nombre'] ?? '');
             $usuario = trim($data['usuario'] ?? '');
             $correo = trim($data['correo'] ?? '');
+            $telefono = trim($data['telefono'] ?? '');
             $password = trim($data['password'] ?? '');
             $rol = trim($data['rol'] ?? 'estudiante');
             $estado = trim($data['estado'] ?? 'Activo');
@@ -52,8 +53,8 @@ try {
                 $pdo->beginTransaction();
 
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare('INSERT INTO usuarios (nombre, usuario, correo, password_hash, rol, estado) VALUES (?, ?, ?, ?, ?, ?)');
-                $stmt->execute([$nombre, $usuario, $correo, $hash, $rol, $estado]);
+                $stmt = $pdo->prepare('INSERT INTO usuarios (nombre, usuario, correo, password_hash, rol, estado, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)');
+                $stmt->execute([$nombre, $usuario, $correo, $hash, $rol, $estado, $telefono]);
                 
                 if ($rol === 'estudiante') {
                     $codigo = trim($data['codigo'] ?? '');
@@ -97,6 +98,7 @@ try {
             $nombre = trim($data['nombre'] ?? '');
             $usuario = trim($data['usuario'] ?? '');
             $correo = trim($data['correo'] ?? '');
+            $telefono = trim($data['telefono'] ?? '');
             $rol = trim($data['rol'] ?? '');
 
             if (!$id || !$nombre || !$usuario || !$correo || !$rol) {
@@ -107,8 +109,8 @@ try {
             $stmtCheck->execute([$usuario, $correo, $id]);
             if ($stmtCheck->fetchColumn() > 0) throw new Exception('El nombre de usuario o correo ya está en uso por otro usuario');
 
-            $stmt = $pdo->prepare('UPDATE usuarios SET nombre = ?, usuario = ?, correo = ?, rol = ? WHERE id = ?');
-            $stmt->execute([$nombre, $usuario, $correo, $rol, $id]);
+            $stmt = $pdo->prepare('UPDATE usuarios SET nombre = ?, usuario = ?, correo = ?, rol = ?, telefono = ? WHERE id = ?');
+            $stmt->execute([$nombre, $usuario, $correo, $rol, $telefono, $id]);
             
             echo json_encode(['success' => true, 'message' => 'Usuario actualizado exitosamente']);
         })(),

@@ -28,6 +28,10 @@ define('DB_USER', $_ENV['DB_USER'] ?? 'root');
 define('DB_PASS', $_ENV['DB_PASS'] ?? '');
 define('DB_CHARSET', $_ENV['DB_CHARSET'] ?? 'utf8mb4');
 
+define('TWILIO_ACCOUNT_SID', $_ENV['TWILIO_ACCOUNT_SID'] ?? 'AC15086a332a4c9c8cd5379a8323438271');
+define('TWILIO_AUTH_TOKEN', $_ENV['TWILIO_AUTH_TOKEN'] ?? '230599ae1823331de0b873fb2d4bca75');
+define('TWILIO_WHATSAPP_FROM', $_ENV['TWILIO_WHATSAPP_FROM'] ?? 'whatsapp:+14155238886');
+
 function base_url(string $path = ''): string
 {
     $base = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');

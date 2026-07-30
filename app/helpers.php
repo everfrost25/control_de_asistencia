@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db.php';
 
 function e(string|int|float|null $value): string
@@ -84,10 +85,86 @@ function verify_csrf_token(): void
         exit;
     }
 }
+
+function normalize_whatsapp_number(string $telefono): string
+{
+    $telefonoLimpio = preg_replace('/[^0-9+]/', '', trim($telefono));
+    if ($telefonoLimpio === '') {
+        return '';
+    }
+
+    $telefonoLimpio = preg_replace('/^\++/', '+', $telefonoLimpio);
+    $digitos = preg_replace('/\D/', '', $telefonoLimpio);
+
+    if (str_starts_with($telefonoLimpio, '+')) {
+        return strlen($digitos) >= 8 ? '+' . $digitos : '';
+    }
+
+    if (strlen($digitos) === 9) {
+        return '+51' . $digitos;
+    }
+
+    return strlen($digitos) >= 10 && strlen($digitos) <= 15 ? '+' . $digitos : '';
+}
+
+function send_whatsapp_login_notification(string $usuario, string $telefono): bool
+{
+    $numero = normalize_whatsapp_number($telefono);
+    if ($numero === '' || TWILIO_ACCOUNT_SID === '' || TWILIO_AUTH_TOKEN === '' || TWILIO_WHATSAPP_FROM === '') {
+        return false;
+    }
+
+    $url = sprintf('https://api.twilio.com/2010-04-01/Accounts/%s/Messages.json', TWILIO_ACCOUNT_SID);
+    $postFields = http_build_query([
+        'From' => TWILIO_WHATSAPP_FROM,
+        'To' => 'whatsapp:' . $numero,
+        'Body' => sprintf('Hola %s, se ha iniciado sesiÃ³n de manera exitosa.', $usuario),
+    ]);
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+    curl_setopt($ch, CURLOPT_USERPWD, TWILIO_ACCOUNT_SID . ':' . TWILIO_AUTH_TOKEN);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+    curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    return in_array($httpCode, [200, 201], true);
+}
+
+function queue_whatsapp_login_notification(array $user): void
+{
+    if (empty($user['telefono'])) {
+        return;
+    }
+
+    $_SESSION['pending_whatsapp_notice'] = [
+        'usuario' => $user['usuario'] ?? $user['nombre'] ?? '',
+        'telefono' => $user['telefono'],
+    ];
+}
+
+function flush_pending_whatsapp_login_notification(): void
+{
+    if (empty($_SESSION['pending_whatsapp_notice'])) {
+        return;
+    }
+
+    $notice = $_SESSION['pending_whatsapp_notice'];
+    unset($_SESSION['pending_whatsapp_notice']);
+
+    if (!empty($notice['telefono'])) {
+        send_whatsapp_login_notification($notice['usuario'], $notice['telefono']);
+    }
+}
+
 function login_user(string $usuario, string $password): bool
 {
     $row = fetch_one(
-        'SELECT id, nombre, usuario, password_hash, rol, estado, correo FROM usuarios WHERE (usuario = ? OR correo = ?) AND estado = "Activo"',
+        'SELECT id, nombre, usuario, password_hash, rol, estado, correo, telefono FROM usuarios WHERE (usuario = ? OR correo = ?) AND estado = "Activo"',
         [$usuario, $usuario]
     );
 
@@ -97,6 +174,8 @@ function login_user(string $usuario, string $password): bool
 
     unset($row['password_hash']);
     $_SESSION['user'] = $row;
+    queue_whatsapp_login_notification($row);
+
     return true;
 }
 
@@ -282,7 +361,7 @@ function estudiantes_filtrados2(array $filtros = []): array {
     $params = [];
     if (!empty($filtros['programa_de_estudio']) && $filtros['programa_de_estudio'] !== 'Todos') { $sql .= ' AND p.nombre = ?'; $params[] = $filtros['programa_de_estudio']; }
     if (!empty($filtros['ciclo']) && $filtros['ciclo'] !== 'Todos') { $sql .= ' AND pc.nombre = ?'; $params[] = $filtros['ciclo']; }
-    if (!empty($filtros['unidad_didáctica']) && $filtros['unidad_didáctica'] !== 'Todos') { $sql .= ' AND ud.nombre = ?'; $params[] = $filtros['unidad_didáctica']; }
+    if (!empty($filtros['unidad_didï¿½ctica']) && $filtros['unidad_didï¿½ctica'] !== 'Todos') { $sql .= ' AND ud.nombre = ?'; $params[] = $filtros['unidad_didï¿½ctica']; }
     $sql .= ' ORDER BY e.nombres';
     return fetch_all($sql, $params);
 }

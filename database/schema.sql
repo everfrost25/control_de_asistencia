@@ -83,6 +83,7 @@ CREATE TABLE `usuarios` (
   `rol` enum('admin','docente','estudiante') NOT NULL,
   `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
   `correo` varchar(160) NOT NULL,
+  `telefono` varchar(30) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -134,6 +135,13 @@ INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password_hash`, `rol`, `esta
 ('49', 'Alejandro Jorge Martínez Díaz', 'docente017', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente017@institucion.edu.pe'),
 ('50', 'Sofía Marta García Álvarez', 'docente018', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente018@institucion.edu.pe'),
 ('51', 'Marta Lucía Gil Serrano', 'docente019', '$2y$10$XOcRcceB/hDMgoYHdxhPK.3/C.eenjndjbRsy6OxH59T7s0Ho/jlC', 'docente', 'Activo', 'docente019@institucion.edu.pe');
+
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password_hash`, `rol`, `estado`, `correo`, `telefono`) VALUES
+('52', 'Samuel', 'samuel', '$2y$10$AZxrtL5lbnn8LH9AaOM4HeWFu74HCO4duL015C2lKA5QMf7GJ47a2', 'admin', 'Activo', 'samuel@institucion.edu.pe', '977193094'),
+('53', 'Sugey', 'sugey', '$2y$10$QCzvqm2V/vlWNMGqsWgVBefaqn66FVROuTDrX5zbDIShklKNtEcXC', 'admin', 'Activo', 'sugey@institucion.edu.pe', '940039287'),
+('54', 'Andre', 'andre', '$2y$10$6BAu1T5UfyfUl60yUa/.vOV1y2DobZRp3mcxeIFTm8Sz/3nwS67sK', 'admin', 'Activo', 'andre@institucion.edu.pe', '946591675'),
+('55', 'Benjamin', 'benjamin', '$2y$10$8M97nIl3fEjS9ft8N65mder7U3DrfmmrJ62j09OH0dpoD7Xmsi5D2', 'admin', 'Activo', 'benjamin@institucion.edu.pe', '906802835'),
+('56', 'Luis', 'luis', '$2y$10$wwLg9tC.dYv/gN9WiwtnbO4qnrBsyS8gn2aAjV8dlLgu1LBVs2.oe', 'docente', 'Activo', 'luis@institucion.edu.pe', '990912614');
 -- ------------------------------------------------------------
 -- Table: `modulos_formativos`
 -- ------------------------------------------------------------

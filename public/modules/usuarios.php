@@ -1,5 +1,5 @@
 <?php
-$usuarios = fetch_all('SELECT id, nombre, usuario, rol, estado, correo FROM usuarios ORDER BY nombre');
+$usuarios = fetch_all('SELECT id, nombre, usuario, rol, estado, correo, telefono FROM usuarios ORDER BY nombre');
 $programas = all_programas();
 $unidades = all_unidades();
 $periodos = all_periodos();
@@ -59,6 +59,7 @@ $roleLabel = [
                     <th class="table-th w-1/3">Nombre</th>
                     <th class="table-th w-1/4">Usuario / Correo</th>
                     <th class="table-th">Rol</th>
+                    <th class="table-th">Teléfono</th>
                     <th class="table-th">Estado</th>
                     <th class="table-th text-right">Acciones</th>
                 </tr>
@@ -80,6 +81,7 @@ $roleLabel = [
                         </div>
                     </td>
                     <td class="table-td"><span class="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700"><?= e($roleLabel[$u['rol']] ?? $u['rol']) ?></span></td>
+                    <td class="table-td"><span class="text-slate-700 text-sm"><?= e($u['telefono'] ?: '—') ?></span></td>
                     <td class="table-td"><span class="rounded-full px-2.5 py-1 text-xs font-semibold <?= badge_class($u['estado']) ?>"><?= e($u['estado']) ?></span></td>
                     <td class="table-td">
                         <div class="flex items-center justify-end gap-3">
@@ -171,6 +173,7 @@ $roleLabel = [
                 <label class="md:col-span-2"><span class="mb-1 block text-sm font-medium text-slate-700">Nombres Completos *</span><input type="text" name="nombre" class="form-control w-full" required></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Usuario *</span><input type="text" name="usuario" class="form-control w-full" required></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Correo *</span><input type="email" name="correo" class="form-control w-full" required></label>
+                <label><span class="mb-1 block text-sm font-medium text-slate-700">Teléfono</span><input type="text" name="telefono" class="form-control w-full" placeholder="Ej: 977 193 094"></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Contraseña *</span><input type="password" name="password" class="form-control w-full" required minlength="6"></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Rol</span><select name="rol" onchange="toggleFields(this, 'form-nuevo-usuario')" class="form-control w-full"><option value="estudiante">Estudiante</option><option value="docente">Docente</option><option value="admin">Admin</option></select></label>
                 
@@ -225,6 +228,7 @@ $roleLabel = [
                 <label class="md:col-span-2"><span class="mb-1 block text-sm font-medium text-slate-700">Nombres Completos *</span><input type="text" name="nombre" id="edit-nombre" class="form-control w-full" required></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Usuario *</span><input type="text" name="usuario" id="edit-usuario" class="form-control w-full" required></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Correo *</span><input type="email" name="correo" id="edit-correo" class="form-control w-full" required></label>
+                <label><span class="mb-1 block text-sm font-medium text-slate-700">Teléfono</span><input type="text" name="telefono" id="edit-telefono" class="form-control w-full" placeholder="Ej: 977 193 094"></label>
                 <label><span class="mb-1 block text-sm font-medium text-slate-700">Rol</span><select name="rol" id="edit-rol" onchange="toggleFields(this, 'form-editar-usuario')" class="form-control w-full"><option value="estudiante">Estudiante</option><option value="docente">Docente</option><option value="admin">Admin</option></select></label>
 
                 <!-- Campos dinámicos editables (Opcional por ahora) -->
@@ -271,6 +275,7 @@ function openEditModal(user) {
     document.getElementById('edit-nombre').value = user.nombre;
     document.getElementById('edit-usuario').value = user.usuario;
     document.getElementById('edit-correo').value = user.correo;
+    document.getElementById('edit-telefono').value = user.telefono ?? '';
     document.getElementById('edit-rol').value = user.rol;
     
     // Show modal manually
