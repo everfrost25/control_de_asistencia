@@ -118,7 +118,7 @@ function send_whatsapp_login_notification(string $usuario, string $telefono): bo
     $postFields = http_build_query([
         'From' => TWILIO_WHATSAPP_FROM,
         'To' => 'whatsapp:' . $numero,
-        'Body' => sprintf('Hola %s, se ha iniciado sesión de manera exitosa.', $usuario),
+        'Body' => sprintf('Hola %s, se ha iniciado sesión de manera exitosa en "Control de asistencia VRHT".', $usuario),
     ]);
 
     $ch = curl_init($url);
